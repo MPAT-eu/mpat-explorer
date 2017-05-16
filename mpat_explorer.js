@@ -221,8 +221,8 @@ function ident(label, obj) {
   switch (label) {
     case 'page':
       return obj.page.post_title;
-    case 'layout':
-      return obj.name;
+    case 'page_layout':
+      return obj.page_layout.post_title;
     default:
       break;
   }
@@ -330,13 +330,13 @@ function process(o) {
       const lnks = findLinks(obj);
       const l = lnks.join(',');
       websitegraph.push({ id: obj.page.ID, title: obj.page.post_title, links: lnks });
-      v.innerHTML = `<td><a href='${location.href}&action=export&pageid=${obj.page.ID}'>${obj.page.post_title} (${obj.page.ID})</a></td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
+      v.innerHTML = `<td>${obj.page.post_title} (${obj.page.ID})</td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
       vv.appendChild(v);
       pageCounter++;
     }
     if (obj.page_layout) {
       const l = obj.page_layout;
-      v.innerHTML = `<td><a href='${location.href}&action=export&layoutid=${l.ID}'>${l.post_title} (${l.ID})</a></td><td>${zones(l.meta.mpat_content)}</td>`;
+      v.innerHTML = `<td>${l.post_title} (${l.ID})</td><td>${zones(l.meta.mpat_content)}</td>`;
       v1.appendChild(v);
       layoutCounter++;
     }
