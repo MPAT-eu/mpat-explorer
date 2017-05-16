@@ -1,0 +1,13 @@
+.general-table {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.general-table thead {
+  background-color: black;
+  color: white;
+}
+
+.general-table td {
+  border: 1px solid black;
+  padding: 5px 15px;
