@@ -1,19 +1,4 @@
 /*
- * display content of a remote MPAT page
- */
-function exploreRemoteMPATPage() {
-  const remoteContent = document.getElementById('remoteUrl').value;
-  const script = document.createElement('script');
-  script.textContent = remoteContent;
-  document.getElementById('insertionPoint').appendChild(script);
-  // get the info from MPATGlobalInformation
-  document.getElementById('remoteLayout').textContent =
-    JSON.stringify(MPATGlobalInformation.Post.meta.layout, null, 2);
-  document.getElementById('remotePage').textContent =
-    JSON.stringify(MPATGlobalInformation.Post.meta.content, null, 2);
-}
-
-/*
  * take a site info and make it into a D3.js package
  */
 function d3ize(wsgraph) {
