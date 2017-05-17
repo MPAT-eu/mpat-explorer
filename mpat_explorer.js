@@ -229,6 +229,8 @@ function ident(label, obj) {
   return '';
 }
 
+let theSvgElement;
+
 /*
  * create the web site graph from the D3-compatible object
  */
@@ -247,7 +249,9 @@ function d3process(d3g) {
                   .start();
   const svg = d3.select('#insertionPoint').append('svg')
                 .attr('width', width)
-                .attr('height', height);
+                .attr('height', height)
+                .attr('viewBox', '0 0 1000 1000');
+  theSvgElement = svg[0][0];
   svg.append('svg:style')
      .text('path { stroke: #666; stroke-width: 1.5px; } ' +
            'path.link { fill: none; } ' +
@@ -308,6 +312,68 @@ function d3process(d3g) {
       .attr('transform', function(d) {
         return 'translate(' + d.x + ',' + d.y + ')'; });
   }
+  window.addEventListener('keydown', processKeyPress, true);
+}
+
+/* Constants: */
+const plus = 107;
+const minus = 109;
+const leftArrow = 37; // Key code for the left arrow key.
+const upArrow = 38;
+const rightArrow = 39;
+const downArrow = 40;
+const panRate = -50; // Number of pixels to pan per key press.
+const zoomRate = 0.8;
+
+function processKeyPress(evt) {
+  const viewBox = theSvgElement.getAttribute('viewBox');
+  // Grab the object representing the SVG element's viewBox attribute.
+  const viewBoxValues = viewBox.split(' ');
+  // Create an array and insert each individual view box attribute value (assume they're
+  // separated by a single whitespace character).
+  /* The array is filled with strings, convert the first two viewBox values to floats: */
+  viewBoxValues[0] = parseFloat(viewBoxValues[0]);
+  // Represent the x-coordinate on the viewBox attribute.
+  viewBoxValues[1] = parseFloat(viewBoxValues[1]);
+  // Represent the y coordinate on the viewBox attribute.
+  switch (evt.keyCode) {
+    case minus:
+      const centerX = viewBoxValues[0] + viewBoxValues[2] / 2;
+      const centerY = viewBoxValues[1] + viewBoxValues[3] / 2;
+      viewBoxValues[2] /= zoomRate;
+      viewBoxValues[3] /= zoomRate;
+      viewBoxValues[0] = centerX - viewBoxValues[2] / 2;
+      viewBoxValues[1] = centerY - viewBoxValues[3] / 2;
+      break;
+    case plus:
+      const cX = viewBoxValues[0] + viewBoxValues[2] / 2;
+      const cY = viewBoxValues[1] + viewBoxValues[3] / 2;
+      viewBoxValues[2] *= zoomRate;
+      viewBoxValues[3] *= zoomRate;
+      viewBoxValues[0] = cX - viewBoxValues[2] / 2;
+      viewBoxValues[1] = cY - viewBoxValues[3] / 2;
+      break;
+    case leftArrow:
+      viewBoxValues[0] += panRate;
+      // Increase the x-coordinate value of the viewBox attribute by the amount given by panRate.
+      break;
+    case rightArrow:
+      viewBoxValues[0] -= panRate;
+      // Decrease the x-coordinate value of the viewBox attribute by the amount given by panRate.
+      break;
+    case upArrow:
+      viewBoxValues[1] += panRate;
+      // Increase the y-coordinate value of the viewBox attribute by the amount given by panRate.
+      break;
+    case downArrow:
+      viewBoxValues[1] -= panRate;
+      // Decrease the y-coordinate value of the viewBox attribute by the amount given by panRate.
+      break;
+  } // switch
+  theSvgElement.setAttribute('viewBox', viewBoxValues.join(' '));
+  // Convert the viewBoxValues array into a string with a white
+  // space character between the given values.
+  evt.preventDefault();
 }
 
 /*
@@ -394,6 +460,9 @@ function process(o) {
   const det2 = document.createElement('h3');
   ip.appendChild(det2);
   det2.textContent = 'Website graph';
+  const det3 = document.createElement('p');
+  ip.appendChild(det3);
+  det3.textContent = 'Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph.';
   const d3g = d3ize(websitegraph);
   d3process(d3g);
 }
