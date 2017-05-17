@@ -1,0 +1,18 @@
+{
+    "name" : "mpat/mpat-explorer",
+    "description" : "MPAT explorer",
+    "version" : "1.0.0",
+    "license" : "GPL2",
+    "authors" : [{
+        "name" : "Jean-Claude Dufourd",
+        "email" : "dufourd@telecom-paristech.fr"
+    }
+    ],
+    "repositories" : [
+        {
+            "type" : "vcs",
+            "url" : "git@github.com:jcdufourd/mpat-explorer.git"
+        }
+    ],
+    "type" : "wordpress-plugin"
+}
