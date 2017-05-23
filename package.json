@@ -1,0 +1,27 @@
+{
+  "name": "mpat-explorer",
+  "version": "1.0.0",
+  "description": "Plugin to explore an MPAT site, at a low level.",
+  "main": "LayoutIO.js",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --progress",
+    "build-dev": "NODE_ENV=dev webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcdufourd/mpat-explorer.git"
+  },
+  "author": "Jean-Claude Dufourd",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/jcdufourd/mpat-explorer/issues"
+  },
+  "homepage": "https://github.com/jcdufourd/mpat-explorer",
+  "dependencies": {
+    "6to5-core": "^3.6.5",
+    "6to5-loader": "^3.0.0",
+    "axios": "^0.16.1",
+    "es6-loader": "^0.2.0",
+    "webpack": "^2.6.0"
+  }
+}
