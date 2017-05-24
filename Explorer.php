@@ -20,7 +20,7 @@ class Explorer {
     function load() {
         /* activate WP REST API v2 http://v2.wp-api.org/extending/javascript-client/ */
         wp_enqueue_script('wp-api');
-        wp_enqueue_script('mpat-general', plugin_dir_url(__FILE__) . 'mpat_explorer.js', array(), 1.0, true);
+        wp_enqueue_script('mpat-general', plugin_dir_url(__FILE__) . 'build/main.bundle.js', array(), 1.0, true);
         wp_localize_script('mpat-general', 'MPATExplorer', $this->get());
         wp_enqueue_style('mpat-general', plugin_dir_url(__FILE__) . 'explorer.css');
 ?>
@@ -50,6 +50,7 @@ class Explorer {
                     <tr>
                         <td>Layout name (ID)</td>
                         <td>Zones</td>
+                        <td>Actions</td>
                     </tr>
                     </thead>
                     <tbody id="layoutTable"></tbody>

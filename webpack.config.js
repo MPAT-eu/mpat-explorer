@@ -1,51 +1,25 @@
-var webpack = require('webpack');
 var path = require('path');
-var stage = process.env.NODE_ENV || 'dev';
+var webpack = require('webpack');
 
-let getPlugins = (stage) => {
-
-  const env = (stage) => (
-    new webpack.DefinePlugin({
-                               'process.env': {
-                                 NODE_ENV: `'${stage}'`,
-                               },
-                               DEBUG: stage !== 'production'
-                             })
-  );
-
-  var plugins = [
-    env(stage)
-  ];
-  return plugins;
-};
-
-var createConfig = (entry, extraPlugin = [], extraLoader = []) => ({
-  context: __dirname,
-  entry,
+module.exports = {
+  entry: { "explorer": [ './js/main.js', './js/cloneLayout.js'] },
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'main.bundle.js'
+  },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'es6-loader' }
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
+      }
     ]
   },
-  output: {
-    path: __dirname,
-    filename: '[name].min.js',
-    libraryTarget: 'var',
-    // `library` determines the name of the global variable
-    library: '[name]'
+  stats: {
+    colors: true
   },
-  externals: {},
-  plugins: getPlugins(stage),
-  resolve: {
-    extensions: ['.js']
-  }
-});
-
-const config = createConfig({
-                              explorer: [
-                                './LayoutIO.js'
-                              ]
-                            }
-);
-
-module.exports = [config];
+  devtool: 'source-map'
+};
