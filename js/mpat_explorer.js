@@ -138,7 +138,7 @@ export function findLinks(obj) {
  */
 export function zones(o) {
   let res = '';
-  const zones = o.layout; //eslint-disable-line
+  const zones = o.layout || []; //eslint-disable-line
   for (let i = 0; i < zones.length; i++) {
     const zone = zones[i];
     res += zone.x * 10;
@@ -147,7 +147,7 @@ export function zones(o) {
     res += '+';
     res += zone.w * 10;
     res += 'x';
-    res += zone.x * 10;
+    res += zone.h * 10;
     if (zone.static) {
       res += '[S]';
     }

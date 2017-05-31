@@ -1519,7 +1519,7 @@ function findLinks(obj) {
  */
 function zones(o) {
   var res = '';
-  var zones = o.layout; //eslint-disable-line
+  var zones = o.layout || []; //eslint-disable-line
   for (var i = 0; i < zones.length; i++) {
     var zone = zones[i];
     res += zone.x * 10;
@@ -1528,7 +1528,7 @@ function zones(o) {
     res += '+';
     res += zone.w * 10;
     res += 'x';
-    res += zone.x * 10;
+    res += zone.h * 10;
     if (zone.static) {
       res += '[S]';
     }
