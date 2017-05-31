@@ -14,6 +14,7 @@ export function process(o) {
   /*
    * loop on the info from PHP to build the JS data structure
    */
+  const url = window.location.href.substring(0, window.location.href.indexOf('admin.php?'));
   for (let i = 0; i < o.length; i++) {
     const v = document.createElement('tr');
     const obj = o[i];
@@ -21,15 +22,17 @@ export function process(o) {
       // fill the page table
       const lnks = findLinks(obj);
       const l = lnks.join(',');
+      const url2 = `${url}post.php?post=${obj.page.ID}&action=edit`;
       websitegraph.push({ id: obj.page.ID, title: obj.page.post_title, links: lnks });
-      v.innerHTML = `<td>${obj.page.post_title} (${obj.page.ID})</td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
+      v.innerHTML = `<td><a href="${url2}">${obj.page.post_title} (${obj.page.ID})</a></td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
       vv.appendChild(v);
       pageCounter++;
     }
     if (obj.page_layout) {
       // fill the layout table
       const l = obj.page_layout;
-      v.innerHTML = `<td>${l.post_title} (${l.ID})</td><td>${zones(l.meta.mpat_content)}</td><td><button type="button" onclick="cloneLayout(${i})">Clone</button></td>`;
+      const url2 = `${url}post.php?post=${l.ID}&action=edit`;
+      v.innerHTML = `<td><a href="${url2}">${l.post_title} (${l.ID})</a></td><td>${zones(l.meta.mpat_content)}</td><td><button type="button" onclick="cloneLayout(${i})">Clone</button></td>`;
       v1.appendChild(v);
       layoutCounter++;
     }

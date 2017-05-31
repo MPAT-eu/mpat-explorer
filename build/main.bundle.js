@@ -552,6 +552,7 @@ function process(o) {
   /*
    * loop on the info from PHP to build the JS data structure
    */
+  var url = window.location.href.substring(0, window.location.href.indexOf('admin.php?'));
   for (var i = 0; i < o.length; i++) {
     var v = document.createElement('tr');
     var obj = o[i];
@@ -559,15 +560,17 @@ function process(o) {
       // fill the page table
       var lnks = (0, _mpat_explorer.findLinks)(obj);
       var l = lnks.join(',');
+      var url2 = url + 'post.php?post=' + obj.page.ID + '&action=edit';
       websitegraph.push({ id: obj.page.ID, title: obj.page.post_title, links: lnks });
-      v.innerHTML = '<td>' + obj.page.post_title + ' (' + obj.page.ID + ')</td><td>Components: ' + (0, _mpat_explorer.components)(obj) + '<br/>Media: ' + (0, _mpat_explorer.media)(obj) + '<br/>Links: ' + l + '</td>';
+      v.innerHTML = '<td><a href="' + url2 + '">' + obj.page.post_title + ' (' + obj.page.ID + ')</a></td><td>Components: ' + (0, _mpat_explorer.components)(obj) + '<br/>Media: ' + (0, _mpat_explorer.media)(obj) + '<br/>Links: ' + l + '</td>';
       vv.appendChild(v);
       pageCounter++;
     }
     if (obj.page_layout) {
       // fill the layout table
       var _l = obj.page_layout;
-      v.innerHTML = '<td>' + _l.post_title + ' (' + _l.ID + ')</td><td>' + (0, _mpat_explorer.zones)(_l.meta.mpat_content) + '</td><td><button type="button" onclick="cloneLayout(' + i + ')">Clone</button></td>';
+      var _url = url + 'post.php?post=' + _l.ID + '&action=edit';
+      v.innerHTML = '<td><a href="' + _url + '">' + _l.post_title + ' (' + _l.ID + ')</a></td><td>' + (0, _mpat_explorer.zones)(_l.meta.mpat_content) + '</td><td><button type="button" onclick="cloneLayout(' + i + ')">Clone</button></td>';
       v1.appendChild(v);
       layoutCounter++;
     }
