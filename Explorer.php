@@ -74,7 +74,11 @@ class Explorer {
     if ($opt) {
       array_push($main, ['timeline_scenario' => json_decode($opt)]);
     }
-   $pages = get_pages();
+    $opt = get_option('dsmcc');
+    if ($opt) {
+      array_push($main, ['dsmcc' => json_decode($opt)]);
+    }
+    $pages = get_pages();
     foreach ($pages as $page) {
         $page = $page->to_array();
         $meta = get_post_meta($page['ID'], 'mpat_content', true);

@@ -588,6 +588,9 @@ function process(o) {
   pre.appendChild(sum);
   var bq = document.createElement('blockquote');
   pre.appendChild(bq);
+  var det1 = document.createElement('details');
+  bq.appendChild(det1);
+  bq.appendChild(document.createElement('br'));
   for (var _i = 0; _i < o.length; _i++) {
     var _obj = o[_i];
     var odet = document.createElement('details');
@@ -609,9 +612,6 @@ function process(o) {
   }
   ip.appendChild(pre);
   // raw JSON object for debug purposes
-  ip.appendChild(document.createElement('br'));
-  var det1 = document.createElement('details');
-  ip.appendChild(det1);
   sum = document.createElement('summary');
   sum.textContent = 'Raw JSON';
   det1.appendChild(sum);

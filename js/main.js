@@ -51,6 +51,9 @@ export function process(o) {
   pre.appendChild(sum);
   const bq = document.createElement('blockquote');
   pre.appendChild(bq);
+  const det1 = document.createElement('details');
+  bq.appendChild(det1);
+  bq.appendChild(document.createElement('br'));
   for (let i = 0; i < o.length; i++) {
     const obj = o[i];
     const odet = document.createElement('details');
@@ -72,9 +75,6 @@ export function process(o) {
   }
   ip.appendChild(pre);
   // raw JSON object for debug purposes
-  ip.appendChild(document.createElement('br'));
-  const det1 = document.createElement('details');
-  ip.appendChild(det1);
   sum = document.createElement('summary');
   sum.textContent = 'Raw JSON';
   det1.appendChild(sum);
