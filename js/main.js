@@ -15,6 +15,7 @@ export function process(o) {
    * loop on the info from PHP to build the JS data structure
    */
   const url = window.location.href.substring(0, window.location.href.indexOf('admin.php?'));
+  const usage = {};
   for (let i = 0; i < o.length; i++) {
     const v = document.createElement('tr');
     const obj = o[i];
@@ -27,18 +28,37 @@ export function process(o) {
       v.innerHTML = `<td><a href="${url2}">${obj.page.post_title} (${obj.page.ID})</a></td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
       vv.appendChild(v);
       pageCounter++;
-    }
-    if (obj.page_layout) {
-      // fill the layout table
-      const l = obj.page_layout;
-      const url2 = `${url}post.php?post=${l.ID}&action=edit`;
-      v.innerHTML = `<td><a href="${url2}">${l.post_title} (${l.ID})</a></td><td>${zones(l.meta.mpat_content)}</td><td><button type="button" onclick="cloneLayout(${i})">Clone</button></td>`;
-      v1.appendChild(v);
-      layoutCounter++;
+      const tag = `p${obj.page.meta.mpat_content.layoutId}`;
+      if (!usage[tag]) {
+        usage[tag] = [];
+      }
+      usage[tag].push(i);
     }
     if (obj.mpat_application_manager) {
       document.getElementById('navmodel').textContent +=
         obj.mpat_application_manager.navigation_model;
+    }
+  }
+  for (let i = 0; i < o.length; i++) {
+    const v = document.createElement('tr');
+    const obj = o[i];
+    if (obj.page_layout) {
+      // fill the layout table
+      const l = obj.page_layout;
+      const url2 = `${url}post.php?post=${l.ID}&action=edit`;
+      const usageOfThis = usage[`p${l.ID}`];
+      let users = '';
+      if (usageOfThis) {
+        usageOfThis.forEach((j) => {
+          const page = o[j].page;
+          const url3 = `${url}post.php?post=${page.ID}&action=edit`;
+          users += ` <a href="${url3}">${page.post_title} (${page.ID})</a>`;
+        });
+      }
+      if (users === '') users = '--unused--';
+      v.innerHTML = `<td><a href="${url2}">${l.post_title} (${l.ID})</a></td><td>${users}</td><td>${zones(l.meta.mpat_content)}</td><td><button type="button" onclick="cloneLayout(${i})">Clone</button></td>`;
+      v1.appendChild(v);
+      layoutCounter++;
     }
   }
   document.getElementById('pages').textContent += '' + pageCounter; //eslint-disable-line

@@ -553,6 +553,7 @@ function process(o) {
    * loop on the info from PHP to build the JS data structure
    */
   var url = window.location.href.substring(0, window.location.href.indexOf('admin.php?'));
+  var usage = {};
   for (var i = 0; i < o.length; i++) {
     var v = document.createElement('tr');
     var obj = o[i];
@@ -565,17 +566,36 @@ function process(o) {
       v.innerHTML = '<td><a href="' + url2 + '">' + obj.page.post_title + ' (' + obj.page.ID + ')</a></td><td>Components: ' + (0, _mpat_explorer.components)(obj) + '<br/>Media: ' + (0, _mpat_explorer.media)(obj) + '<br/>Links: ' + l + '</td>';
       vv.appendChild(v);
       pageCounter++;
-    }
-    if (obj.page_layout) {
-      // fill the layout table
-      var _l = obj.page_layout;
-      var _url = url + 'post.php?post=' + _l.ID + '&action=edit';
-      v.innerHTML = '<td><a href="' + _url + '">' + _l.post_title + ' (' + _l.ID + ')</a></td><td>' + (0, _mpat_explorer.zones)(_l.meta.mpat_content) + '</td><td><button type="button" onclick="cloneLayout(' + i + ')">Clone</button></td>';
-      v1.appendChild(v);
-      layoutCounter++;
+      var tag = 'p' + obj.page.meta.mpat_content.layoutId;
+      if (!usage[tag]) {
+        usage[tag] = [];
+      }
+      usage[tag].push(i);
     }
     if (obj.mpat_application_manager) {
       document.getElementById('navmodel').textContent += obj.mpat_application_manager.navigation_model;
+    }
+  }
+  for (var _i = 0; _i < o.length; _i++) {
+    var _v = document.createElement('tr');
+    var _obj = o[_i];
+    if (_obj.page_layout) {
+      // fill the layout table
+      var _l = _obj.page_layout;
+      var _url = url + 'post.php?post=' + _l.ID + '&action=edit';
+      var usageOfThis = usage['p' + _l.ID];
+      var users = '';
+      if (usageOfThis) {
+        usageOfThis.forEach(function (j) {
+          var page = o[j].page;
+          var url3 = url + 'post.php?post=' + page.ID + '&action=edit';
+          users += ' <a href="' + url3 + '">' + page.post_title + ' (' + page.ID + ')</a>';
+        });
+      }
+      if (users === '') users = '--unused--';
+      _v.innerHTML = '<td><a href="' + _url + '">' + _l.post_title + ' (' + _l.ID + ')</a></td><td>' + users + '</td><td>' + (0, _mpat_explorer.zones)(_l.meta.mpat_content) + '</td><td><button type="button" onclick="cloneLayout(' + _i + ')">Clone</button></td>';
+      v1.appendChild(_v);
+      layoutCounter++;
     }
   }
   document.getElementById('pages').textContent += '' + pageCounter; //eslint-disable-line
@@ -591,21 +611,21 @@ function process(o) {
   var det1 = document.createElement('details');
   bq.appendChild(det1);
   bq.appendChild(document.createElement('br'));
-  for (var _i = 0; _i < o.length; _i++) {
-    var _obj = o[_i];
+  for (var _i2 = 0; _i2 < o.length; _i2++) {
+    var _obj2 = o[_i2];
     var odet = document.createElement('details');
     sum = document.createElement('summary');
     odet.appendChild(sum);
-    var keys = Object.keys(_obj);
+    var keys = Object.keys(_obj2);
     var label = keys[0];
-    sum.innerHTML = '<i>' + label + '</i> <b>' + (0, _mpat_explorer.ident)(label, _obj) + '</b>';
+    sum.innerHTML = '<i>' + label + '</i> <b>' + (0, _mpat_explorer.ident)(label, _obj2) + '</b>';
     var bq1 = document.createElement('blockquote');
     odet.appendChild(bq1);
     var rest = document.createElement('pre');
     if (keys.length === 1) {
-      rest.textContent = JSON.stringify(_obj[keys[0]], null, 2);
+      rest.textContent = JSON.stringify(_obj2[keys[0]], null, 2);
     } else {
-      rest.textContent = JSON.stringify(_obj, null, 2);
+      rest.textContent = JSON.stringify(_obj2, null, 2);
     }
     bq1.appendChild(rest);
     bq.appendChild(odet);

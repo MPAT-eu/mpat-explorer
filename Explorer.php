@@ -49,6 +49,7 @@ class Explorer {
                     <thead>
                     <tr>
                         <td>Layout name (ID)</td>
+                        <td>Used by</td>
                         <td>Zones</td>
                         <td>Actions</td>
                     </tr>
@@ -72,11 +73,11 @@ class Explorer {
     }
     $opt = get_option('timeline_scenario');
     if ($opt) {
-      array_push($main, ['timeline_scenario' => json_decode($opt)]);
+      array_push($main, ['timeline_scenario' => $opt]);
     }
     $opt = get_option('dsmcc');
     if ($opt) {
-      array_push($main, ['dsmcc' => json_decode($opt)]);
+      array_push($main, ['dsmcc' => $opt]);
     }
     $pages = get_pages();
     foreach ($pages as $page) {
