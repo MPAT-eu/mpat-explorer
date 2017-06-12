@@ -62,8 +62,8 @@ export function d3ize(wsgraph) {
 let theSvgElement;
 
 /* Constants: */
-const plus = 107;
-const minus = 109;
+const plus = 187;
+const minus = 189;
 const leftArrow = 37; // Key code for the left arrow key.
 const upArrow = 38;
 const rightArrow = 39;

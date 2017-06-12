@@ -560,7 +560,9 @@ function process(o) {
     if (obj.page) {
       // fill the page table
       var lnks = (0, _mpat_explorer.findLinks)(obj);
-      var l = lnks.join(',');
+      var l = lnks.map(function (a) {
+        return a.url;
+      }).join(',');
       var url2 = url + 'post.php?post=' + obj.page.ID + '&action=edit';
       websitegraph.push({ id: obj.page.ID, title: obj.page.post_title, links: lnks });
       v.innerHTML = '<td><a href="' + url2 + '">' + obj.page.post_title + ' (' + obj.page.ID + ')</a></td><td>Components: ' + (0, _mpat_explorer.components)(obj) + '<br/>Media: ' + (0, _mpat_explorer.media)(obj) + '<br/>Links: ' + l + '</td>';
@@ -1278,8 +1280,8 @@ function d3ize(wsgraph) {
 var theSvgElement = void 0;
 
 /* Constants: */
-var plus = 107;
-var minus = 109;
+var plus = 187;
+var minus = 189;
 var leftArrow = 37; // Key code for the left arrow key.
 var upArrow = 38;
 var rightArrow = 39;
@@ -1298,6 +1300,7 @@ function processKeyPress(evt) {
   // Represent the x-coordinate on the viewBox attribute.
   viewBoxValues[1] = parseFloat(viewBoxValues[1]);
   // Represent the y coordinate on the viewBox attribute.
+  console.log(evt.keyCode);
   switch (evt.keyCode) {
     case minus:
       var centerX = viewBoxValues[0] + viewBoxValues[2] / 2;

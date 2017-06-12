@@ -22,7 +22,7 @@ export function process(o) {
     if (obj.page) {
       // fill the page table
       const lnks = findLinks(obj);
-      const l = lnks.join(',');
+      const l = lnks.map(a => a.url).join(',');
       const url2 = `${url}post.php?post=${obj.page.ID}&action=edit`;
       websitegraph.push({ id: obj.page.ID, title: obj.page.post_title, links: lnks });
       v.innerHTML = `<td><a href="${url2}">${obj.page.post_title} (${obj.page.ID})</a></td><td>Components: ${components(obj)}<br/>Media: ${media(obj)}<br/>Links: ${l}</td>`;
