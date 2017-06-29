@@ -1,5 +1,7 @@
 import { findLinks, components, ident, media, zones } from './mpat_explorer';
 import { d3ize, d3process } from './graph';
+import PageIO from './PageIO';
+import LayoutIO from './LayoutIO';
 
 /*
  * general function
@@ -113,5 +115,45 @@ export function process(o) {
   det3.textContent = 'Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph.';
   const d3g = d3ize(websitegraph);
   d3process(d3g);
+  const hr = document.createElement('hr');
+  hr.style.cssText = 'width: 50%; margin: 30px;';
+  ip.appendChild(hr);
+  const bu = document.createElement('button');
+  bu.id = "btn-cleanall";
+  bu.title = "Empty database";
+  bu.textContent = 'Empty DB';
+  bu.addEventListener('click', empty);
+  ip.appendChild(bu);
 }
 
+function empty() {
+  const p = new PageIO();
+  const l = new LayoutIO();
+  p.get(
+    (pages) => {
+      pages.forEach(page => {
+        p.remove(
+          page.id,
+          () => {},
+          (e) => alert("Could not delete page " + page.id)
+        )
+      });
+      l.get(
+        (layouts) => {
+          layouts.forEach(layout => {
+            l.remove(
+              layout.ID,
+              () => {},
+              (e) => alert("Could not delete layout " + layout.id)
+            )
+          });
+        },
+        (e) => alert("Could not read DB for layouts")
+      )
+    },
+    () => {
+      alert("Could not read DB for pages");
+    }
+  )
+
+}
