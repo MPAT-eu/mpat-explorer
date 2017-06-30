@@ -3,10 +3,27 @@ import { d3ize, d3process } from './graph';
 import PageIO from './PageIO';
 import LayoutIO from './LayoutIO';
 
+function preprocess(o) {
+  window.MPAT = {
+    pages: {},
+    pageArray: [],
+    layouts: {}
+  };
+  o.forEach((obj) => {
+    if (obj.page) {
+      window.MPAT.pages['p'+obj.page.ID] = obj.page;
+      window.MPAT.pageArray.push(obj.page);
+    } else if (obj.page_layout) {
+      window.MPAT.layouts['l' + obj.page_layout.ID] = obj.page_layout;
+    }
+  });
+}
+
 /*
  * general function
  */
 export function process(o) {
+  preprocess(o);
   const ip = document.getElementById('insertionPoint');
   const vv = document.getElementById('infoTable');
   const v1 = document.getElementById('layoutTable');
@@ -124,6 +141,48 @@ export function process(o) {
   bu.textContent = 'Empty DB';
   bu.addEventListener('click', empty);
   ip.appendChild(bu);
+  const bu2 = document.createElement('button');
+  bu2.id = "btn-debugdb";
+  bu2.title = "Debug database";
+  bu2.textContent = 'Debug DB';
+  bu2.addEventListener('click', debugDb);
+  ip.appendChild(bu2);
+}
+
+function debugDb() {
+  const p = new PageIO();
+  window.MPAT.pageArray.forEach((page) => {
+    const content = page.meta.mpat_content.content;
+    const toDelete = [];
+    const layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
+    if (!layout) {
+      alert(`Page ${page.ID} has no layout`);
+      return;
+    }
+    const layoutBoxes = layout.meta.mpat_content.layout;
+    Object.keys(content).forEach((boxName) => {
+      if (!layoutBoxes.find(b => b.i === boxName)) {
+        toDelete.push(boxName);
+      }
+    });
+    if (toDelete.length > 0) {
+      alert(`Page ${page.ID} has extra boxes ${toDelete.join(' ')}`);
+      toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
+      p.put(
+        page.ID,
+        {
+          ID: page.ID,
+          title: page.post_title,
+          parent: page.post_parent,
+          status: page.post_status,
+          mpat_content: page.meta.mpat_content
+        },
+        () => {},
+        (e) => {alert('error saving page '+page.ID+' '+e);}
+      );
+    }
+  });
+  alert('end of DB processing');
 }
 
 function empty() {
@@ -147,6 +206,7 @@ function empty() {
               (e) => alert("Could not delete layout " + layout.id)
             )
           });
+          alert('end of DB emptying');
         },
         (e) => alert("Could not read DB for layouts")
       )

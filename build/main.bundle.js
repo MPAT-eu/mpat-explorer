@@ -549,10 +549,27 @@ var _LayoutIO2 = _interopRequireDefault(_LayoutIO);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function preprocess(o) {
+  window.MPAT = {
+    pages: {},
+    pageArray: [],
+    layouts: {}
+  };
+  o.forEach(function (obj) {
+    if (obj.page) {
+      window.MPAT.pages['p' + obj.page.ID] = obj.page;
+      window.MPAT.pageArray.push(obj.page);
+    } else if (obj.page_layout) {
+      window.MPAT.layouts['l' + obj.page_layout.ID] = obj.page_layout;
+    }
+  });
+}
+
 /*
  * general function
  */
 function process(o) {
+  preprocess(o);
   var ip = document.getElementById('insertionPoint');
   var vv = document.getElementById('infoTable');
   var v1 = document.getElementById('layoutTable');
@@ -671,6 +688,49 @@ function process(o) {
   bu.textContent = 'Empty DB';
   bu.addEventListener('click', empty);
   ip.appendChild(bu);
+  var bu2 = document.createElement('button');
+  bu2.id = "btn-debugdb";
+  bu2.title = "Debug database";
+  bu2.textContent = 'Debug DB';
+  bu2.addEventListener('click', debugDb);
+  ip.appendChild(bu2);
+}
+
+function debugDb() {
+  var p = new _PageIO2.default();
+  window.MPAT.pageArray.forEach(function (page) {
+    var content = page.meta.mpat_content.content;
+    var toDelete = [];
+    var layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
+    if (!layout) {
+      alert('Page ' + page.ID + ' has no layout');
+      return;
+    }
+    var layoutBoxes = layout.meta.mpat_content.layout;
+    Object.keys(content).forEach(function (boxName) {
+      if (!layoutBoxes.find(function (b) {
+        return b.i === boxName;
+      })) {
+        toDelete.push(boxName);
+      }
+    });
+    if (toDelete.length > 0) {
+      alert('Page ' + page.ID + ' has extra boxes ' + toDelete.join(' '));
+      toDelete.forEach(function (name) {
+        return delete page.meta.mpat_content.content[name];
+      });
+      p.put(page.ID, {
+        ID: page.ID,
+        title: page.post_title,
+        parent: page.post_parent,
+        status: page.post_status,
+        mpat_content: page.meta.mpat_content
+      }, function () {}, function (e) {
+        alert('error saving page ' + page.ID + ' ' + e);
+      });
+    }
+  });
+  alert('end of DB processing');
 }
 
 function empty() {
@@ -688,6 +748,7 @@ function empty() {
           return alert("Could not delete layout " + layout.id);
         });
       });
+      alert('end of DB emptying');
     }, function (e) {
       return alert("Could not read DB for layouts");
     });
