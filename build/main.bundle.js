@@ -533,6 +533,9 @@ function cloneLayout(layoutIndex) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.process = process;
 
 var _mpat_explorer = __webpack_require__(15);
@@ -700,34 +703,63 @@ function debugDb() {
   var p = new _PageIO2.default();
   window.MPAT.pageArray.forEach(function (page) {
     var content = page.meta.mpat_content.content;
+    var name = page.post_title || page.ID;
     var toDelete = [];
     var layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
-      alert('Page ' + page.ID + ' has no layout');
+      alert('Page ' + name + ' has no layout');
       return;
     }
     var layoutBoxes = layout.meta.mpat_content.layout;
-    Object.keys(content).forEach(function (boxName) {
-      if (!layoutBoxes.find(function (b) {
-        return b.i === boxName;
-      })) {
-        toDelete.push(boxName);
+    if (content === undefined) {
+      alert('Page ' + name + ' has no content');
+    } else {
+      var contentKeys = Object.keys(content);
+      if (!Array.isArray(contentKeys) || contentKeys.length === 0) {
+        alert('Page ' + name + ' has empty content');
+      } else {
+        Object.keys(content).forEach(function (boxName) {
+          if (!layoutBoxes.find(function (b) {
+            return b.i === boxName;
+          })) {
+            toDelete.push(boxName);
+          } else {
+            // test the content of the component data
+            var boxContent = content[boxName];
+            // for each state, check
+            Object.keys(boxContent).forEach(function (stateName) {
+              var component = boxContent[stateName];
+              var type = component.type;
+              if (typeof type !== 'string') {
+                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non string type ' + type);
+              }
+              var data = component.data;
+              if (data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') {
+                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non object data ' + data);
+              }
+              var styles = component.styles;
+              if (styles && (typeof styles === 'undefined' ? 'undefined' : _typeof(styles)) !== 'object') {
+                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non object styles ' + styles);
+              }
+            });
+          }
+        });
       }
-    });
-    if (toDelete.length > 0) {
-      alert('Page ' + page.ID + ' has extra boxes ' + toDelete.join(' '));
-      toDelete.forEach(function (name) {
-        return delete page.meta.mpat_content.content[name];
-      });
-      p.put(page.ID, {
-        ID: page.ID,
-        title: page.post_title,
-        parent: page.post_parent,
-        status: page.post_status,
-        mpat_content: page.meta.mpat_content
-      }, function () {}, function (e) {
-        alert('error saving page ' + page.ID + ' ' + e);
-      });
+      if (toDelete.length > 0) {
+        alert('Page ' + name + ' has extra boxes ' + toDelete.join(' '));
+        toDelete.forEach(function (name) {
+          return delete page.meta.mpat_content.content[name];
+        });
+        p.put(page.ID, {
+          ID: page.ID,
+          title: page.post_title,
+          parent: page.post_parent,
+          status: page.post_status,
+          mpat_content: page.meta.mpat_content
+        }, function () {}, function (e) {
+          alert('error saving page ' + page.ID + ' ' + e);
+        });
+      }
     }
   });
   alert('end of DB processing');

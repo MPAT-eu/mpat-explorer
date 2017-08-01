@@ -153,33 +153,65 @@ function debugDb() {
   const p = new PageIO();
   window.MPAT.pageArray.forEach((page) => {
     const content = page.meta.mpat_content.content;
+    const name = page.post_title || page.ID;
     const toDelete = [];
     const layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
-      alert(`Page ${page.ID} has no layout`);
+      alert(`Page ${name} has no layout`);
       return;
     }
     const layoutBoxes = layout.meta.mpat_content.layout;
-    Object.keys(content).forEach((boxName) => {
-      if (!layoutBoxes.find(b => b.i === boxName)) {
-        toDelete.push(boxName);
+    if (content === undefined) {
+      alert(`Page ${name} has no content`);
+    } else {
+      const contentKeys = Object.keys(content);
+      if (!Array.isArray(contentKeys) || contentKeys.length === 0) {
+        alert(`Page ${name} has empty content`);
+      } else {
+        Object.keys(content).forEach((boxName) => {
+          if (!layoutBoxes.find(b => b.i === boxName)) {
+            toDelete.push(boxName);
+          } else {
+            // test the content of the component data
+            const boxContent = content[boxName];
+            // for each state, check
+            Object.keys(boxContent).forEach((stateName) => {
+              const component = boxContent[stateName];
+              const type = component.type;
+              if (typeof type !== 'string') {
+                alert(`Page ${name} box ${boxName} state ${stateName} has non string type ${type}`);
+              }
+              const data = component.data;
+              if (data && typeof data !== 'object') {
+                alert(`Page ${name} box ${boxName} state ${stateName} has non object data ${data}`);
+              }
+              const styles = component.styles;
+              if (styles && typeof styles !== 'object') {
+                alert(`Page ${name} box ${boxName} state ${stateName} has non object styles ${styles}`);
+              }
+            });
+          }
+        });
       }
-    });
-    if (toDelete.length > 0) {
-      alert(`Page ${page.ID} has extra boxes ${toDelete.join(' ')}`);
-      toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
-      p.put(
-        page.ID,
-        {
-          ID: page.ID,
-          title: page.post_title,
-          parent: page.post_parent,
-          status: page.post_status,
-          mpat_content: page.meta.mpat_content
-        },
-        () => {},
-        (e) => {alert('error saving page '+page.ID+' '+e);}
-      );
+      if (toDelete.length > 0) {
+        alert(`Page ${name} has extra boxes ${toDelete.join(' ')}`);
+        toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
+        p.put(
+          page.ID,
+          {
+            ID: page.ID,
+            title: page.post_title,
+            parent: page.post_parent,
+            status: page.post_status,
+            mpat_content: page.meta.mpat_content
+          },
+          () => {
+          },
+          (e) => {
+            alert('error saving page ' + page.ID + ' ' + e);
+          }
+        );
+      }
     }
   });
   alert('end of DB processing');
