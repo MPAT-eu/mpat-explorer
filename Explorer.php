@@ -81,19 +81,35 @@ class Explorer {
     }
     $pages = get_pages();
     foreach ($pages as $page) {
-        $page = $page->to_array();
-        $meta = get_post_meta($page['ID'], 'mpat_content', true);
-        if (isset($meta["layoutId"]))
-        {
-            $layout = get_post( $meta["layoutId"] );
-            if ($layout && $layout->post_type == "page_layout") {
-                $meta["layout_name"] = $layout->post_title;
-            }
+      $page = $page->to_array();
+      $meta = get_post_meta($page['ID'], 'mpat_content', true);
+      if (isset($meta["layoutId"]))
+      {
+        $layout = get_post( $meta["layoutId"] );
+        if ($layout && $layout->post_type == "page_layout") {
+          $meta["layout_name"] = $layout->post_title;
         }
-        $page['meta'] = array('mpat_content' => $meta);
-        array_push($main, array(
-            "page" => $page,
-        ));
+      }
+      $page['meta'] = array('mpat_content' => $meta);
+      array_push($main, array(
+        "page" => $page,
+      ));
+    }
+    $pages = get_posts(array('post_type' => 'page_model'));
+    foreach ($pages as $page) {
+      $page = $page->to_array();
+      $meta = get_post_meta($page['ID'], 'mpat_content', true);
+      if (isset($meta["layoutId"]))
+      {
+        $layout = get_post( $meta["layoutId"] );
+        if ($layout && $layout->post_type == "page_layout") {
+          $meta["layout_name"] = $layout->post_title;
+        }
+      }
+      $page['meta'] = array('mpat_content' => $meta);
+      array_push($main, array(
+        "page_model" => $page,
+      ));
     }
     $layouts = get_posts( array( 'post_type' => 'page_layout', 'posts_per_page' => '100' ) );
     foreach ($layouts as $layout) {
