@@ -39,6 +39,29 @@ export default class PageIO {
       });
   }
 
+  /*
+   * reloads the pages unconditionnaly
+   */
+  getPage(pageId, onSuccess, onError) {
+    axios
+      .get(pagesRestUrl+'/'+pageId, {})
+      .then((v) => {
+        onSuccess.call(null, v.data);
+      })
+      .catch((e) => {
+        onError.call(null, e);
+        if (e.response) {
+          // The request was made, but the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log('Error', e.response.status);
+          console.log(e.response.data.message);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', e.message);
+        }
+      });
+  }
+
   // updates an existing page
   put(pageId, updated, onSuccess, onError) { // eslint-disable-line
     axios

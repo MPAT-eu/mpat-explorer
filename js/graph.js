@@ -90,6 +90,7 @@ function processKeyPress(evt) {
       viewBoxValues[3] /= zoomRate;
       viewBoxValues[0] = centerX - viewBoxValues[2] / 2;
       viewBoxValues[1] = centerY - viewBoxValues[3] / 2;
+      evt.preventDefault();
       break;
     case plus:
       const cX = viewBoxValues[0] + viewBoxValues[2] / 2;
@@ -98,28 +99,32 @@ function processKeyPress(evt) {
       viewBoxValues[3] *= zoomRate;
       viewBoxValues[0] = cX - viewBoxValues[2] / 2;
       viewBoxValues[1] = cY - viewBoxValues[3] / 2;
+      evt.preventDefault();
       break;
     case leftArrow:
       viewBoxValues[0] += panRate;
       // Increase the x-coordinate value of the viewBox attribute by the amount given by panRate.
+      evt.preventDefault();
       break;
     case rightArrow:
       viewBoxValues[0] -= panRate;
       // Decrease the x-coordinate value of the viewBox attribute by the amount given by panRate.
+      evt.preventDefault();
       break;
     case upArrow:
       viewBoxValues[1] += panRate;
       // Increase the y-coordinate value of the viewBox attribute by the amount given by panRate.
+      evt.preventDefault();
       break;
     case downArrow:
       viewBoxValues[1] -= panRate;
       // Decrease the y-coordinate value of the viewBox attribute by the amount given by panRate.
+      evt.preventDefault();
       break;
   } // switch
   theSvgElement.setAttribute('viewBox', viewBoxValues.join(' '));
   // Convert the viewBoxValues array into a string with a white
   // space character between the given values.
-  evt.preventDefault();
 }
 
 /*

@@ -2,6 +2,7 @@ import { findLinks, components, ident, media, zones } from './mpat_explorer';
 import { d3ize, d3process } from './graph';
 import PageIO from './PageIO';
 import LayoutIO from './LayoutIO';
+import ModelIO from './ModelIO';
 
 function preprocess(o) {
   window.MPAT = {
@@ -147,10 +148,65 @@ export function process(o) {
   bu2.textContent = 'Debug DB';
   bu2.addEventListener('click', debugDb);
   ip.appendChild(bu2);
+  const but1 = document.getElementById('explorerGetPage');
+  but1.addEventListener('click', explorerGetPage);
+  const but2 = document.getElementById('explorerPutPage');
+  but2.addEventListener('click', explorerPutPage);
+  const selector = document.getElementById('page-id-field');
+  window.MPAT.pageArray.forEach((page) => {
+    const name = page.post_title || page.ID;
+    const opt = document.createElement('option');
+    selector.appendChild(opt);
+    opt.value = page.ID;
+    opt.textContent = name;
+  });
+}
+
+const commonPageIO = new PageIO();
+const commonLayoutIO = new LayoutIO();
+const commonModelIO = new ModelIO();
+let currentPage = null;
+
+function explorerGetPage() {
+  const pageId = document.getElementById('page-id-field').value;
+  if (pageId > 0) {
+    commonPageIO.getPage(
+      pageId,
+      (page)=> {
+        currentPage = page;
+        delete page.mpat_content.layout;
+        document.getElementById('mpat-text-editing').value =
+          JSON.stringify(page.mpat_content, null, 4);
+      },
+      (error)=> {
+        document.getElementById('mpat-text-editing').value =
+          "error getting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+      }
+    );
+  } else {
+    window.alert("page id is "+pageId);
+  }
+}
+
+function explorerPutPage() {
+  if (!currentPage) return;
+  const pageId = document.getElementById('page-id-field').value;
+  currentPage.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
+  commonPageIO.put(
+    pageId,
+    currentPage,
+    (res)=> {
+      document.getElementById('mpat-text-editing').value =
+        "page updated "+pageId;
+    },
+    (error)=> {
+      document.getElementById('mpat-text-editing').value =
+        "error getting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+    }
+  );
 }
 
 function debugDb() {
-  const p = new PageIO();
   window.MPAT.pageArray.forEach((page) => {
     const content = page.meta.mpat_content.content;
     const name = page.post_title || page.ID;
@@ -196,7 +252,7 @@ function debugDb() {
       if (toDelete.length > 0) {
         alert(`Page ${name} has extra boxes ${toDelete.join(' ')}`);
         toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
-        p.put(
+        commonPageIO.put(
           page.ID,
           {
             ID: page.ID,
@@ -218,34 +274,46 @@ function debugDb() {
 }
 
 function empty() {
-  const p = new PageIO();
-  const l = new LayoutIO();
-  p.get(
+  commonPageIO.get(
     (pages) => {
       pages.forEach(page => {
-        p.remove(
+        commonPageIO.remove(
           page.id,
           () => {},
           (e) => alert("Could not delete page " + page.id)
         )
       });
-      l.get(
-        (layouts) => {
-          layouts.forEach(layout => {
-            l.remove(
-              layout.ID,
+      commonModelIO.get(
+        (pages) => {
+          pages.forEach(page => {
+            commonModelIO.remove(
+              page.id,
               () => {},
-              (e) => alert("Could not delete layout " + layout.id)
+              (e) => alert("Could not delete page " + page.id)
             )
           });
-          alert('end of DB emptying');
+          commonLayoutIO.get(
+            (layouts) => {
+              layouts.forEach(layout => {
+                commonLayoutIO.remove(
+                  layout.ID,
+                  () => {},
+                  (e) => alert("Could not delete layout " + layout.id)
+                )
+              });
+              alert('end of DB emptying');
+            },
+            (e) => alert("Could not read DB for layouts")
+          )
         },
-        (e) => alert("Could not read DB for layouts")
+        () => {
+          alert("Could not read DB for models");
+        }
       )
     },
     () => {
       alert("Could not read DB for pages");
     }
-  )
+  );
 
 }

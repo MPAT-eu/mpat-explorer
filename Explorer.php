@@ -31,6 +31,34 @@ class Explorer {
             <h4 id="pages">Pages: </h4>
             <h4 id="layouts">Layouts: </h4>
             <details>
+                <summary>Page Text Editor</summary>
+                <br/>
+                <textarea
+                        id="mpat-text-editing"
+                        title="mpat text editing"
+                        class="mpat-text-editing">
+                </textarea>
+                <br/>
+                <button
+                        type="button"
+                        id="explorerGetPage"
+                        class="mpat-explorer-get-page-button">
+                    Get Page
+                </button>
+                &nbsp;
+                <button
+                        type="button"
+                        id="explorerPutPage"
+                        class="mpat-explorer-put-page-button">
+                    Put Page
+                </button>
+                &nbsp;
+                <select id="page-id-field" title="page id selector">
+                    <option value="0">CHOOSE PAGE</option>
+                </select>
+            </details>
+            <br/>
+            <details>
                 <summary>Page info with components, links and media</summary>
                 <table class="general-table">
                     <thead>
@@ -78,6 +106,10 @@ class Explorer {
     $opt = get_option('dsmcc');
     if ($opt) {
       array_push($main, ['dsmcc' => $opt]);
+    }
+    $opt = get_option('theme_mods_mpat-theme');
+    if ($opt) {
+      array_push($main, ['theme_mods_mpat-theme' => $opt]);
     }
     $pages = get_pages();
     foreach ($pages as $page) {

@@ -9,5 +9,29 @@
 }
 
 .general-table td {
-  border: 1px solid black;
-  padding: 5px 15px;
+    border: 1px solid black;
+    padding: 5px 15px;
+}
+
+.mpat-text-editing {
+    width: 100%;
+    height: 400px;
+}
+
+.mpat-explorer-get-page-button {
+    width: 120px;
+    height: 30px;
+}
+
+.mpat-explorer-put-page-button {
+    width: 120px;
+    height: 30px;
+}
+
+.mpat-explorer-page-id-field {
+    background-color: white;
+    color: darkblue;
+    width: 200px;
+    height: 30px;
+    font-weight: 700;
+}
