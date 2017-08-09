@@ -3,6 +3,7 @@ import { d3ize, d3process } from './graph';
 import PageIO from './PageIO';
 import LayoutIO from './LayoutIO';
 import ModelIO from './ModelIO';
+import MediaIO from './MediaIO';
 
 function preprocess(o) {
   window.MPAT = {
@@ -164,6 +165,7 @@ export function process(o) {
 const commonPageIO = new PageIO();
 const commonLayoutIO = new LayoutIO();
 const commonModelIO = new ModelIO();
+const commonMediaIO = new MediaIO();
 let currentPage = null;
 
 function explorerGetPage() {
@@ -288,7 +290,7 @@ function empty() {
             commonModelIO.remove(
               page.ID,
               () => {},
-              (e) => alert("Could not delete page " + page.id)
+              (e) => alert("Could not delete page " + page.ID)
             )
           });
           commonLayoutIO.get(
@@ -297,7 +299,7 @@ function empty() {
                 commonLayoutIO.remove(
                   layout.ID,
                   () => {},
-                  (e) => alert("Could not delete layout " + layout.id)
+                  (e) => alert("Could not delete layout " + layout.ID)
                 )
               });
               alert('end of DB emptying');
@@ -314,5 +316,15 @@ function empty() {
       alert("Could not read DB for pages");
     }
   );
-
+  commonMediaIO.get(
+    (medias) => {
+      medias.forEach((media) => {
+        commonMediaIO.remove(
+          media.id,
+          () => {},
+          (e) => alert("Could not delete media " + media.id)
+        )
+      });
+    }
+  );
 }
