@@ -39,12 +39,10 @@ class Explorer {
                         class="mpat-text-editing">
                 </textarea>
                 <br/>
-                <button
-                        type="button"
-                        id="explorerGetPage"
-                        class="mpat-explorer-get-page-button">
-                    Get Page
-                </button>
+                Get page: &nbsp;
+                <select id="page-id-field" title="page id selector">
+                    <option value="0">CHOOSE PAGE</option>
+                </select>
                 &nbsp;
                 <button
                         type="button"
@@ -52,10 +50,6 @@ class Explorer {
                         class="mpat-explorer-put-page-button">
                     Put Page
                 </button>
-                &nbsp;
-                <select id="page-id-field" title="page id selector">
-                    <option value="0">CHOOSE PAGE</option>
-                </select>
             </details>
             <br/>
             <details>

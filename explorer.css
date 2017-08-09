@@ -26,6 +26,9 @@
 .mpat-explorer-put-page-button {
     width: 120px;
     height: 30px;
+    background-color: darkorange;
+    color: white;
+    font-weight: 800;
 }
 
 .mpat-explorer-page-id-field {

@@ -49,6 +49,12 @@ export function media(obj) {
             res += lt(y.data.imgUrl);
           }
           break;
+        case 'redbutton':
+          if (y.data && y.data.img) {
+            res += ',';
+            res += lt(y.data.img);
+          }
+          break;
         case 'video':
           if (y.data && y.data.thumbnail) {
             res += ',';

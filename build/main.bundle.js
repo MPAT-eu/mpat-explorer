@@ -710,8 +710,6 @@ function process(o) {
   bu2.textContent = 'Debug DB';
   bu2.addEventListener('click', debugDb);
   ip.appendChild(bu2);
-  var but1 = document.getElementById('explorerGetPage');
-  but1.addEventListener('click', explorerGetPage);
   var but2 = document.getElementById('explorerPutPage');
   but2.addEventListener('click', explorerPutPage);
   var selector = document.getElementById('page-id-field');
@@ -722,6 +720,7 @@ function process(o) {
     opt.value = page.ID;
     opt.textContent = name;
   });
+  selector.addEventListener('change', explorerGetPage);
 }
 
 var commonPageIO = new _PageIO2.default();
@@ -749,7 +748,7 @@ function explorerPutPage() {
   var pageId = document.getElementById('page-id-field').value;
   currentPage.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonPageIO.put(pageId, currentPage, function (res) {
-    document.getElementById('mpat-text-editing').value = "page updated " + pageId + "\n" + JSON.stringify(res, null, 2);
+    document.getElementById('mpat-text-editing').value = "page updated " + pageId;
   }, function (error) {
     document.getElementById('mpat-text-editing').value = "error getting page " + pageId + "\n" + JSON.stringify(error, null, 2);
   });
@@ -829,7 +828,7 @@ function empty() {
     });
     commonModelIO.get(function (pages) {
       pages.forEach(function (page) {
-        commonModelIO.remove(page.id, function () {}, function (e) {
+        commonModelIO.remove(page.ID, function () {}, function (e) {
           return alert("Could not delete page " + page.id);
         });
       });
@@ -1928,6 +1927,12 @@ function media(obj) {
           if (y.data && y.data.imgUrl) {
             res += ',';
             res += lt(y.data.imgUrl);
+          }
+          break;
+        case 'redbutton':
+          if (y.data && y.data.img) {
+            res += ',';
+            res += lt(y.data.img);
           }
           break;
         case 'video':

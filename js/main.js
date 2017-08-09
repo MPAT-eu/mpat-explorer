@@ -148,8 +148,6 @@ export function process(o) {
   bu2.textContent = 'Debug DB';
   bu2.addEventListener('click', debugDb);
   ip.appendChild(bu2);
-  const but1 = document.getElementById('explorerGetPage');
-  but1.addEventListener('click', explorerGetPage);
   const but2 = document.getElementById('explorerPutPage');
   but2.addEventListener('click', explorerPutPage);
   const selector = document.getElementById('page-id-field');
@@ -160,6 +158,7 @@ export function process(o) {
     opt.value = page.ID;
     opt.textContent = name;
   });
+  selector.addEventListener('change', explorerGetPage);
 }
 
 const commonPageIO = new PageIO();
@@ -287,7 +286,7 @@ function empty() {
         (pages) => {
           pages.forEach(page => {
             commonModelIO.remove(
-              page.id,
+              page.ID,
               () => {},
               (e) => alert("Could not delete page " + page.id)
             )
