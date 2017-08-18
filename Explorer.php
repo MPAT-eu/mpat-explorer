@@ -50,6 +50,34 @@ class Explorer {
                         class="mpat-explorer-put-page-button">
                     Put Page
                 </button>
+                <br/>
+                Get page model: &nbsp;
+                <select id="model-id-field" title="model id selector">
+                    <option value="0">CHOOSE MODEL</option>
+                </select>
+                &nbsp;
+                <button
+                        type="button"
+                        id="explorerPutModel"
+                        class="mpat-explorer-put-page-button">
+                    Put Model
+                </button>
+                <br/>
+                Get option: &nbsp;
+                <select id="option-id-field" title="option selector">
+                    <option value="0">CHOOSE OPTION</option>
+                    <option value="mpat_application_manager">mpat_application_manager</option>
+                    <option value="timeline_scenario">timeline_scenario</option>
+                    <option value="dsmcc">dsmcc</option>
+                    <option value="theme_mods_mpat%2Dtheme">theme_mods_mpat-theme</option>
+                </select>
+                &nbsp;
+                <button
+                        type="button"
+                        id="explorerPutOption"
+                        class="mpat-explorer-put-page-button">
+                    Put Option
+                </button>
             </details>
             <br/>
             <details>

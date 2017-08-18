@@ -166,6 +166,8 @@ export function ident(label, obj) {
   switch (label) {
     case 'page':
       return obj.page.post_title;
+    case 'page_model':
+      return obj.page_model.post_title;
     case 'page_layout':
       return obj.page_layout.post_title;
     default:

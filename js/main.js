@@ -4,6 +4,7 @@ import PageIO from './PageIO';
 import LayoutIO from './LayoutIO';
 import ModelIO from './ModelIO';
 import MediaIO from './MediaIO';
+import OptionIO from './OptionIO';
 
 function preprocess(o) {
   window.MPAT = {
@@ -116,15 +117,15 @@ export function process(o) {
   }
   ip.appendChild(pre);
   // raw JSON object for debug purposes
-  sum = document.createElement('summary');
-  sum.textContent = 'Raw JSON';
-  det1.appendChild(sum);
-  const bq2 = document.createElement('blockquote');
-  det1.appendChild(bq2);
-  const pre2 = document.createElement('pre');
-  pre2.textContent = JSON.stringify(o, null, 2);
-  bq2.appendChild(pre2);
-  ip.appendChild(document.createElement('br'));
+  // sum = document.createElement('summary');
+  // sum.textContent = 'Raw JSON';
+  // det1.appendChild(sum);
+  // const bq2 = document.createElement('blockquote');
+  // det1.appendChild(bq2);
+  // const pre2 = document.createElement('pre');
+  // pre2.textContent = JSON.stringify(o, null, 2);
+  // bq2.appendChild(pre2);
+  // ip.appendChild(document.createElement('br'));
   // insert the web site map at the end
   const det2 = document.createElement('h3');
   ip.appendChild(det2);
@@ -160,15 +161,40 @@ export function process(o) {
     opt.textContent = name;
   });
   selector.addEventListener('change', explorerGetPage);
+  const selector2 = document.getElementById('model-id-field');
+  commonModelIO.get(
+    (models) => {
+      models.forEach((model) => {
+        const name = model.post_title || model.ID;
+        const opt = document.createElement('option');
+        selector2.appendChild(opt);
+        opt.value = model.ID;
+        opt.textContent = name;
+      });
+    },
+    (e) => {}
+  );
+  selector2.addEventListener('change', explorerGetModel);
+  const but3 = document.getElementById('explorerPutModel');
+  but3.addEventListener('click', explorerPutModel);
+  const selector3 = document.getElementById('option-id-field');
+  selector3.addEventListener('change', explorerGetOption);
+  const but4 = document.getElementById('explorerPutOption');
+  but4.addEventListener('click', explorerPutOption);
 }
 
 const commonPageIO = new PageIO();
 const commonLayoutIO = new LayoutIO();
 const commonModelIO = new ModelIO();
 const commonMediaIO = new MediaIO();
+const commonOptionIO = new OptionIO();
 let currentPage = null;
+let currentModel = null;
+let currentOption = null;
 
 function explorerGetPage() {
+  currentModel = null;
+  currentOption = null;
   const pageId = document.getElementById('page-id-field').value;
   if (pageId > 0) {
     commonPageIO.getPage(
@@ -189,6 +215,51 @@ function explorerGetPage() {
   }
 }
 
+function explorerGetModel() {
+  currentPage = null;
+  currentOption = null;
+  const modelId = document.getElementById('model-id-field').value;
+  if (modelId > 0) {
+    commonModelIO.getModel(
+      modelId,
+      (model)=> {
+        currentModel = model;
+        delete model.mpat_content.layout;
+        document.getElementById('mpat-text-editing').value =
+          JSON.stringify(model.mpat_content, null, 4);
+      },
+      (error)=> {
+        document.getElementById('mpat-text-editing').value =
+          "error getting model "+modelId+"\n"+JSON.stringify(error, null, 2);
+      }
+    );
+  } else {
+    window.alert("model id is "+modelId);
+  }
+}
+
+function explorerGetOption() {
+  currentPage = null;
+  currentModel = null;
+  const optionId = document.getElementById('option-id-field').value;
+  if (optionId !== "0") {
+    commonOptionIO.getModel(
+      optionId,
+      (option)=> {
+        currentOption = option;
+        document.getElementById('mpat-text-editing').value =
+          JSON.stringify(option, null, 4);
+      },
+      (error)=> {
+        document.getElementById('mpat-text-editing').value =
+          "error getting option "+optionId+"\n"+JSON.stringify(error, null, 2);
+      }
+    );
+  } else {
+    window.alert("option id is "+optionId);
+  }
+}
+
 function explorerPutPage() {
   if (!currentPage) return;
   const pageId = document.getElementById('page-id-field').value;
@@ -202,7 +273,43 @@ function explorerPutPage() {
     },
     (error)=> {
       document.getElementById('mpat-text-editing').value =
-        "error getting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+        "error putting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+    }
+  );
+}
+
+function explorerPutModel() {
+  if (!currentModel) return;
+  const modelId = document.getElementById('model-id-field').value;
+  currentModel.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
+  commonModelIO.put(
+    modelId,
+    currentModel,
+    (res)=> {
+      document.getElementById('mpat-text-editing').value =
+        "model updated "+modelId;
+    },
+    (error)=> {
+      document.getElementById('mpat-text-editing').value =
+        "error putting model "+modelId+"\n"+JSON.stringify(error, null, 2);
+    }
+  );
+}
+
+function explorerPutOption() {
+  if (!currentOption) return;
+  const optionId = document.getElementById('option-id-field').value;
+  currentOption = JSON.parse(document.getElementById('mpat-text-editing').value);
+  commonOptionIO.put(
+    optionId,
+    currentOption,
+    (res)=> {
+      document.getElementById('mpat-text-editing').value =
+        "option updated "+optionId;
+    },
+    (error)=> {
+      document.getElementById('mpat-text-editing').value =
+        "error putting option "+optionId+"\n"+JSON.stringify(error, null, 2);
     }
   );
 }
