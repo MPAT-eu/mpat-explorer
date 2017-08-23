@@ -170,6 +170,8 @@ export function ident(label, obj) {
       return obj.page_model.post_title;
     case 'page_layout':
       return obj.page_layout.post_title;
+    case 'custom_css':
+      return obj.custom_css.ID;
     default:
       break;
   }

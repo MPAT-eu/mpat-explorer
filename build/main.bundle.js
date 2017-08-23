@@ -661,9 +661,9 @@ function process(o) {
   pre.appendChild(sum);
   var bq = document.createElement('blockquote');
   pre.appendChild(bq);
-  var det1 = document.createElement('details');
-  bq.appendChild(det1);
-  bq.appendChild(document.createElement('br'));
+  // const det1 = document.createElement('details');
+  // bq.appendChild(det1);
+  // bq.appendChild(document.createElement('br'));
   for (var _i2 = 0; _i2 < o.length; _i2++) {
     var _obj2 = o[_i2];
     var odet = document.createElement('details');
@@ -675,7 +675,9 @@ function process(o) {
     var bq1 = document.createElement('blockquote');
     odet.appendChild(bq1);
     var rest = document.createElement('pre');
-    if (keys.length === 1) {
+    if (label === 'custom_css') {
+      rest.textContent = _obj2.custom_css.post_content;
+    } else if (keys.length === 1) {
       rest.textContent = JSON.stringify(_obj2[keys[0]], null, 2);
     } else {
       rest.textContent = JSON.stringify(_obj2, null, 2);
@@ -2411,6 +2413,8 @@ function ident(label, obj) {
       return obj.page_model.post_title;
     case 'page_layout':
       return obj.page_layout.post_title;
+    case 'custom_css':
+      return obj.custom_css.ID;
     default:
       break;
   }

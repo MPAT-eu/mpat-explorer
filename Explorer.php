@@ -167,14 +167,21 @@ class Explorer {
     }
     $layouts = get_posts( array( 'post_type' => 'page_layout', 'posts_per_page' => '100' ) );
     foreach ($layouts as $layout) {
-        $layout = $layout->to_array();
-        if ($layout['post_status'] == 'publish') {
-            $meta = get_post_meta($layout['ID'], 'mpat_content', true);
-            $layout['meta'] = array('mpat_content' => $meta);
-            array_push($main, array(
-                "page_layout" => $layout,
-            ));
-        }
+      $layout = $layout->to_array();
+      if ($layout['post_status'] == 'publish') {
+        $meta = get_post_meta($layout['ID'], 'mpat_content', true);
+        $layout['meta'] = array('mpat_content' => $meta);
+        array_push($main, array(
+          "page_layout" => $layout,
+        ));
+      }
+    }
+    $customcss = get_posts( array( 'post_type' => 'custom_css', 'posts_per_page' => '100' ) );
+    foreach ($customcss as $cc) {
+      $cc = $cc->to_array();
+      array_push($main, array(
+          "custom_css" => $cc,
+      ));
     }
     return $main;
   }

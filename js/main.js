@@ -93,9 +93,9 @@ export function process(o) {
   pre.appendChild(sum);
   const bq = document.createElement('blockquote');
   pre.appendChild(bq);
-  const det1 = document.createElement('details');
-  bq.appendChild(det1);
-  bq.appendChild(document.createElement('br'));
+  // const det1 = document.createElement('details');
+  // bq.appendChild(det1);
+  // bq.appendChild(document.createElement('br'));
   for (let i = 0; i < o.length; i++) {
     const obj = o[i];
     const odet = document.createElement('details');
@@ -107,7 +107,9 @@ export function process(o) {
     const bq1 = document.createElement('blockquote');
     odet.appendChild(bq1);
     const rest = document.createElement('pre');
-    if (keys.length === 1) {
+    if (label === 'custom_css') {
+      rest.textContent = obj.custom_css.post_content;
+    } else if (keys.length === 1) {
       rest.textContent = JSON.stringify(obj[keys[0]], null, 2);
     } else {
       rest.textContent = JSON.stringify(obj, null, 2);
