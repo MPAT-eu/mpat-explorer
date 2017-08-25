@@ -14,7 +14,7 @@ namespace MPAT\Explorer;
 class Explorer {
 
     function general_init() {
-        add_menu_page('MPAT_Explorer', 'Explorer', 'manage_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
+        add_menu_page('MPAT_Explorer', 'Explorer', 'manage_mpat_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
     }
 
     function load() {

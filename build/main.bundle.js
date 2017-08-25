@@ -847,6 +847,7 @@ function debugDb() {
     var content = page.meta.mpat_content.content;
     var name = page.post_title || page.ID;
     var toDelete = [];
+    var toUpdate = false;
     var layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
       alert('Page ' + name + ' has no layout');
@@ -878,6 +879,10 @@ function debugDb() {
               var data = component.data;
               if (data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') {
                 alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non object data ' + data);
+                if (typeof data === 'string') {
+                  component.data = { text: data };
+                  toUpdate = true;
+                }
               }
               var styles = component.styles;
               if (styles && (typeof styles === 'undefined' ? 'undefined' : _typeof(styles)) !== 'object') {
@@ -887,11 +892,13 @@ function debugDb() {
           }
         });
       }
-      if (toDelete.length > 0) {
-        alert('Page ' + name + ' has extra boxes ' + toDelete.join(' '));
-        toDelete.forEach(function (name) {
-          return delete page.meta.mpat_content.content[name];
-        });
+      if (toDelete.length > 0 || toUpdate) {
+        if (toDelete.length > 0) {
+          alert('Page ' + name + ' has extra boxes ' + toDelete.join(' '));
+          toDelete.forEach(function (name) {
+            return delete page.meta.mpat_content.content[name];
+          });
+        }
         commonPageIO.put(page.ID, {
           ID: page.ID,
           title: page.post_title,

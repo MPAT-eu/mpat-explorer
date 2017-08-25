@@ -321,6 +321,7 @@ function debugDb() {
     const content = page.meta.mpat_content.content;
     const name = page.post_title || page.ID;
     const toDelete = [];
+    let toUpdate = false;
     const layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
       alert(`Page ${name} has no layout`);
@@ -350,6 +351,10 @@ function debugDb() {
               const data = component.data;
               if (data && typeof data !== 'object') {
                 alert(`Page ${name} box ${boxName} state ${stateName} has non object data ${data}`);
+                if (typeof data === 'string') {
+                  component.data = {text: data};
+                  toUpdate = true;
+                }
               }
               const styles = component.styles;
               if (styles && typeof styles !== 'object') {
@@ -359,9 +364,11 @@ function debugDb() {
           }
         });
       }
-      if (toDelete.length > 0) {
-        alert(`Page ${name} has extra boxes ${toDelete.join(' ')}`);
-        toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
+      if (toDelete.length > 0 || toUpdate) {
+        if (toDelete.length > 0) {
+          alert(`Page ${name} has extra boxes ${toDelete.join(' ')}`);
+          toDelete.forEach(name => delete page.meta.mpat_content.content[name]);
+        }
         commonPageIO.put(
           page.ID,
           {
