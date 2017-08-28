@@ -1,0 +1,149 @@
+# Copyright (C) 2017 MPAT Explorer
+# This file is distributed under the same license as the MPAT Explorer package.
+msgid ""
+msgstr ""
+"Project-Id-Version: MPAT Explorer 1.0.beta\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
+"POT-Creation-Date: 2017-08-28 15:29:36+00:00\n"
+"PO-Revision-Date: 2017-08-28 17:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Explorer.php:19
+msgid "Explorer"
+msgstr "Verkenner"
+
+#. Plugin Name of the plugin/theme
+#: Explorer.php:31
+msgid "MPAT Explorer"
+msgstr "MPAT Verkenner"
+
+#: Explorer.php:31
+msgid "for"
+msgstr "voor"
+
+#: Explorer.php:32
+msgid "Navigation model"
+msgstr "Navigatie model"
+
+#: Explorer.php:33
+msgid "Pages"
+msgstr "Paginas"
+
+#: Explorer.php:34
+msgid "Layouts"
+msgstr "Lay-outs"
+
+#: Explorer.php:36
+msgid "Page Text Editor"
+msgstr "Pagina Tekst Bewerker"
+
+#: Explorer.php:44 Explorer.php:56
+msgid "Get page"
+msgstr "Verkrijg pagina"
+
+#: Explorer.php:46
+msgid "CHOOSE PAGE"
+msgstr "KIES PAGINA"
+
+#: Explorer.php:53 Explorer.php:65
+msgid "Put"
+msgstr "Plaats"
+
+#: Explorer.php:53
+msgid "Page"
+msgstr "Pagina"
+
+#: Explorer.php:56
+msgid "model"
+msgstr "model"
+
+#: Explorer.php:58
+msgid "CHOOSE MODEL"
+msgstr "KIES MODEL"
+
+#: Explorer.php:65
+msgid "Model"
+msgstr "Model"
+
+#: Explorer.php:68
+msgid "Get option"
+msgstr "Verkrijg optie"
+
+#: Explorer.php:70
+msgid "CHOOSE OPTION"
+msgstr "KIES OPTIE"
+
+#: Explorer.php:71
+msgid "mpat_application_manager"
+msgstr "MPAT Applicatie Manager"
+
+#: Explorer.php:72
+msgid "timeline_scenario"
+msgstr "Tijdlijn scenario"
+
+#: Explorer.php:73
+msgid "dsmcc"
+msgstr "DSMCC"
+
+#: Explorer.php:74
+msgid "theme_mods_mpat_theme"
+msgstr "MPAT Thema"
+
+#: Explorer.php:81
+msgid "Put option"
+msgstr "Plaats optie"
+
+#: Explorer.php:86
+msgid "Page info with components, links and media"
+msgstr "Pagina informatie met betreffende componenten, links en media"
+
+#: Explorer.php:90
+msgid "Page title"
+msgstr "Pagina Titel"
+
+#: Explorer.php:91
+msgid "Content"
+msgstr "Content"
+
+#: Explorer.php:99
+msgid "Layout info with zones"
+msgstr "Lay-out informatie met zone"
+
+#: Explorer.php:103
+msgid "Layout name"
+msgstr "Lay-out titel"
+
+#: Explorer.php:104
+msgid "Used by"
+msgstr "Gebruikt door"
+
+#: Explorer.php:105
+msgid "Zones"
+msgstr "Zones"
+
+#: Explorer.php:106
+msgid "Actions"
+msgstr "Acties"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/MPAT-eu/mpat-explorer/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Explorer MPAT sites"
+msgstr "Verken MPAT sites"
+
+#. Author of the plugin/theme
+msgid "Jean-Claude Dufourd"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/jcdufourd/"
+msgstr ""

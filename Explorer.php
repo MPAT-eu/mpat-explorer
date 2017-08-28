@@ -1,11 +1,13 @@
 <?php
 /*
  * Plugin Name: MPAT Explorer
- * Plugin URI: https://github.com/jcdufourd/mpat/explorer/
+ * Plugin URI: https://github.com/MPAT-eu/mpat-explorer/
  * Description: Explorer MPAT sites
- * Version: 1.0.beta
+ * Version: 1.0.b.i18n
  * Author: Jean-Claude Dufourd
  * Author URI: https://github.com/jcdufourd/
+ * Text Domain: mpat-explorer
+ * Domain Path: /languages
  * License: GPL2
  */
 
@@ -14,8 +16,9 @@ namespace MPAT\Explorer;
 class Explorer {
 
     function general_init() {
-        add_menu_page('MPAT_Explorer', 'Explorer', 'manage_mpat_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
-    }
+      load_plugin_textdomain( 'mpat-explorer', false, basename( dirname( __FILE__ ) ) . '/languages' );
+      add_menu_page('MPAT_Explorer', __('Explorer', 'mpat-explorer'), 'manage_mpat_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
+      }
 
     function load() {
         /* activate WP REST API v2 http://v2.wp-api.org/extending/javascript-client/ */
@@ -26,12 +29,12 @@ class Explorer {
 ?>
         <div id="insertionPoint">
             <script src="https://d3js.org/d3.v3.js"></script>
-            <h2>MPAT Explorer for <?php echo bloginfo('name'); ?></h2>
-            <h4 id="navmodel">Navigation model: </h4>
-            <h4 id="pages">Pages: </h4>
-            <h4 id="layouts">Layouts: </h4>
+            <h2><?php _e('MPAT Explorer', 'mpat-explorer');?> <?php _e('for', 'mpat-explorer');?> <?php echo bloginfo('name'); ?></h2>
+            <h4 id="navmodel"><?php _e('Navigation model', 'mpat-explorer'); ?>: </h4>
+            <h4 id="pages"><?php _e('Pages', 'mpat-explorer');?>: </h4>
+            <h4 id="layouts"><?php _e('Layouts', 'mpat-explorer');?>: </h4>
             <details>
-                <summary>Page Text Editor</summary>
+                <summary><?php _e('Page Text Editor', 'mpat-explorer');?></summary>
                 <br/>
                 <textarea
                         id="mpat-text-editing"
@@ -39,69 +42,69 @@ class Explorer {
                         class="mpat-text-editing">
                 </textarea>
                 <br/>
-                Get page: &nbsp;
+                <?php _e('Get page', 'mpat-explorer');?>: &nbsp;
                 <select id="page-id-field" title="page id selector">
-                    <option value="0">CHOOSE PAGE</option>
+                    <option value="0"><?php _e('CHOOSE PAGE', 'mpat-explorer');?></option>
                 </select>
                 &nbsp;
                 <button
                         type="button"
                         id="explorerPutPage"
                         class="mpat-explorer-put-page-button">
-                    Put Page
+                        <?php _e('Put', 'mpat-explorer');?> <?php _e('Page', 'mpat-explorer');?>
                 </button>
                 <br/>
-                Get page model: &nbsp;
+                <?php _e('Get page', 'mpat-explorer');?> <?php _e('model', 'mpat-explorer');?>: &nbsp;
                 <select id="model-id-field" title="model id selector">
-                    <option value="0">CHOOSE MODEL</option>
+                    <option value="0"><?php _e('CHOOSE MODEL', 'mpat-explorer');?></option>
                 </select>
                 &nbsp;
                 <button
                         type="button"
                         id="explorerPutModel"
                         class="mpat-explorer-put-page-button">
-                    Put Model
+                        <?php _e('Put', 'mpat-explorer');?> <?php _e('Model', 'mpat-explorer');?>
                 </button>
                 <br/>
-                Get option: &nbsp;
+                <?php _e('Get option', 'mpat-explorer');?>: &nbsp;
                 <select id="option-id-field" title="option selector">
-                    <option value="0">CHOOSE OPTION</option>
-                    <option value="mpat_application_manager">mpat_application_manager</option>
-                    <option value="timeline_scenario">timeline_scenario</option>
-                    <option value="dsmcc">dsmcc</option>
-                    <option value="theme_mods_mpat%2Dtheme">theme_mods_mpat-theme</option>
+                    <option value="0"><?php _e('CHOOSE OPTION', 'mpat-explorer');?></option>
+                    <option value="mpat_application_manager"><?php _e('mpat_application_manager', 'mpat-explorer');?></option>
+                    <option value="timeline_scenario"><?php _e('timeline_scenario', 'mpat-explorer');?></option>
+                    <option value="dsmcc"><?php _e('dsmcc', 'mpat-explorer');?></option>
+                    <option value="theme_mods_mpat%2Dtheme"><?php _e('theme_mods_mpat_theme', 'mpat-explorer');?></option>
                 </select>
                 &nbsp;
                 <button
                         type="button"
                         id="explorerPutOption"
                         class="mpat-explorer-put-page-button">
-                    Put Option
+                  <?php _e('Put option', 'mpat-explorer');?>
                 </button>
             </details>
             <br/>
             <details>
-                <summary>Page info with components, links and media</summary>
+                <summary><?php _e('Page info with components, links and media', 'mpat-explorer');?></summary>
                 <table class="general-table">
                     <thead>
                     <tr>
-                        <td>Page title (ID)</td>
-                        <td>Content</td>
+                        <td><?php _e('Page title', 'mpat-explorer');?> (ID)</td>
+                        <td><?php _e('Content', 'mpat-explorer');?></td>
                     </tr>
                     </thead>
-                    <tbody  id="infoTable"></tbody>
+                    <tbody id="infoTable"></tbody>
                 </table>
             </details>
             <br/>
             <details>
-                <summary>Layout info with zones</summary>
+                <summary><?php _e('Layout info with zones', 'mpat-explorer');?></summary>
                 <table class="general-table">
                     <thead>
                     <tr>
-                        <td>Layout name (ID)</td>
-                        <td>Used by</td>
-                        <td>Zones</td>
-                        <td>Actions</td>
+                        <td><?php _e('Layout name', 'mpat-explorer');?> (ID)</td>
+                        <td><?php _e('Used by', 'mpat-explorer');?></td>
+                        <td><?php _e('Zones', 'mpat-explorer');?></td>
+                        <td><?php _e('Actions', 'mpat-explorer');?></td>
                     </tr>
                     </thead>
                     <tbody id="layoutTable"></tbody>
