@@ -1,6 +1,7 @@
 /*
  * take a site info and make it into a D3.js package
  */
+
 export function d3ize(wsgraph) {
   const d3g = {
     directed: true,

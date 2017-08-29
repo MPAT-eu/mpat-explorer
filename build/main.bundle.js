@@ -505,7 +505,7 @@ function cloneLayout(layoutIndex) {
   }
   var explorer = (0, _globals.explorerData)(); // get the php table
   var layout = explorer[layoutIndex].page_layout;
-  var newName = (0, _globals.userPrompt)('Name of cloned layout ?');
+  var newName = (0, _globals.userPrompt)(mpatExplorerI18n.nameOfCloneLayout);
   if (newName === '') {
     return;
   }
@@ -647,7 +647,7 @@ function process(o) {
   // shown as a JSON object after the tables
   var pre = document.createElement('details');
   var sum = document.createElement('summary');
-  sum.textContent = 'Complete info';
+  sum.textContent = mpatExplorerI18n.completeInfo;
   pre.appendChild(sum);
   var bq = document.createElement('blockquote');
   pre.appendChild(bq);
@@ -689,10 +689,10 @@ function process(o) {
   // insert the web site map at the end
   var det2 = document.createElement('h3');
   ip.appendChild(det2);
-  det2.textContent = 'Website graph';
+  det2.textContent = mpatExplorerI18n.websiteGraph;
   var det3 = document.createElement('p');
   ip.appendChild(det3);
-  det3.textContent = 'Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph.';
+  det3.textContent = mpatExplorerI18n.zoom;
   var d3g = (0, _graph.d3ize)(websitegraph);
   (0, _graph.d3process)(d3g);
   var hr = document.createElement('hr');
@@ -700,14 +700,14 @@ function process(o) {
   ip.appendChild(hr);
   var bu = document.createElement('button');
   bu.id = "btn-cleanall";
-  bu.title = "Empty database";
-  bu.textContent = 'Empty DB';
+  bu.title = mpatExplorerI18n.emptyDatabase;
+  bu.textContent = mpatExplorerI18n.emptyDB;
   bu.addEventListener('click', empty);
   ip.appendChild(bu);
   var bu2 = document.createElement('button');
   bu2.id = "btn-debugdb";
-  bu2.title = "Debug database";
-  bu2.textContent = 'Debug DB';
+  bu2.title = mpatExplorerI18n.debugDatabase;
+  bu2.textContent = mpatExplorerI18n.debugDB;
   bu2.addEventListener('click', debugDb);
   ip.appendChild(bu2);
   var but2 = document.getElementById('explorerPutPage');
@@ -759,10 +759,10 @@ function explorerGetPage() {
       delete page.mpat_content.layout;
       document.getElementById('mpat-text-editing').value = JSON.stringify(page.mpat_content, null, 4);
     }, function (error) {
-      document.getElementById('mpat-text-editing').value = "error getting page " + pageId + "\n" + JSON.stringify(error, null, 2);
+      document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errorGettingPage + pageId + "\n" + JSON.stringify(error, null, 2);
     });
   } else {
-    window.alert("page id is " + pageId);
+    window.alert(mpatExplorerI18n.pageIs + pageId);
   }
 }
 
@@ -776,10 +776,10 @@ function explorerGetModel() {
       delete model.mpat_content.layout;
       document.getElementById('mpat-text-editing').value = JSON.stringify(model.mpat_content, null, 4);
     }, function (error) {
-      document.getElementById('mpat-text-editing').value = "error getting model " + modelId + "\n" + JSON.stringify(error, null, 2);
+      document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errorGettingModel + modelId + "\n" + JSON.stringify(error, null, 2);
     });
   } else {
-    window.alert("model id is " + modelId);
+    window.alert(mpatExplorerI18n.modelIs + modelId);
   }
 }
 
@@ -792,10 +792,10 @@ function explorerGetOption() {
       currentOption = option;
       document.getElementById('mpat-text-editing').value = JSON.stringify(option, null, 4);
     }, function (error) {
-      document.getElementById('mpat-text-editing').value = "error getting option " + optionId + "\n" + JSON.stringify(error, null, 2);
+      document.getElementById('mpat-text-editing').value = mpatExplorerI18n.erroGettingOption + optionId + "\n" + JSON.stringify(error, null, 2);
     });
   } else {
-    window.alert("option id is " + optionId);
+    window.alert(mpatExplorerI18n.optionIs + optionId);
   }
 }
 
@@ -804,9 +804,9 @@ function explorerPutPage() {
   var pageId = document.getElementById('page-id-field').value;
   currentPage.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonPageIO.put(pageId, currentPage, function (res) {
-    document.getElementById('mpat-text-editing').value = "page updated " + pageId;
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.pageUpdated + pageId;
   }, function (error) {
-    document.getElementById('mpat-text-editing').value = "error putting page " + pageId + "\n" + JSON.stringify(error, null, 2);
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errPutPage + pageId + "\n" + JSON.stringify(error, null, 2);
   });
 }
 
@@ -815,9 +815,9 @@ function explorerPutModel() {
   var modelId = document.getElementById('model-id-field').value;
   currentModel.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonModelIO.put(modelId, currentModel, function (res) {
-    document.getElementById('mpat-text-editing').value = "model updated " + modelId;
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.modelUpdated + modelId;
   }, function (error) {
-    document.getElementById('mpat-text-editing').value = "error putting model " + modelId + "\n" + JSON.stringify(error, null, 2);
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errPutModel + modelId + "\n" + JSON.stringify(error, null, 2);
   });
 }
 
@@ -826,9 +826,9 @@ function explorerPutOption() {
   var optionId = document.getElementById('option-id-field').value;
   currentOption = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonOptionIO.put(optionId, currentOption, function (res) {
-    document.getElementById('mpat-text-editing').value = "option updated " + optionId;
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.optionUpdated + optionId;
   }, function (error) {
-    document.getElementById('mpat-text-editing').value = "error putting option " + optionId + "\n" + JSON.stringify(error, null, 2);
+    document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errPutOption + optionId + "\n" + JSON.stringify(error, null, 2);
   });
 }
 
@@ -840,16 +840,16 @@ function debugDb() {
     var toUpdate = false;
     var layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
-      alert('Page ' + name + ' has no layout');
+      alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.hasNoLayout);
       return;
     }
     var layoutBoxes = layout.meta.mpat_content.layout;
     if (content === undefined) {
-      alert('Page ' + name + ' has no content');
+      alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.hasNoContent);
     } else {
       var contentKeys = Object.keys(content);
       if (!Array.isArray(contentKeys) || contentKeys.length === 0) {
-        alert('Page ' + name + ' has empty content');
+        alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.hasEmptyContent);
       } else {
         Object.keys(content).forEach(function (boxName) {
           if (!layoutBoxes.find(function (b) {
@@ -864,11 +864,11 @@ function debugDb() {
               var component = boxContent[stateName];
               var type = component.type;
               if (typeof type !== 'string') {
-                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non string type ' + type);
+                alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.box + ' ' + boxName + ' ' + mpatExplorerI18n.state + ' ' + stateName + ' has non string type ' + type);
               }
               var data = component.data;
               if (data && (typeof data === 'undefined' ? 'undefined' : _typeof(data)) !== 'object') {
-                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non object data ' + data);
+                alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.box + ' ' + boxName + ' ' + mpatExplorerI18n.state + ' ' + stateName + ' has non object data ' + data);
                 if (typeof data === 'string') {
                   component.data = { text: data };
                   toUpdate = true;
@@ -876,7 +876,7 @@ function debugDb() {
               }
               var styles = component.styles;
               if (styles && (typeof styles === 'undefined' ? 'undefined' : _typeof(styles)) !== 'object') {
-                alert('Page ' + name + ' box ' + boxName + ' state ' + stateName + ' has non object styles ' + styles);
+                alert(mpatExplorerI18n.Page + ' ' + name + ' ' + mpatExplorerI18n.box + ' ' + boxName + ' ' + mpatExplorerI18n.state + ' ' + stateName + ' has non object styles ' + styles);
               }
             });
           }
@@ -896,7 +896,7 @@ function debugDb() {
           status: page.post_status,
           mpat_content: page.meta.mpat_content
         }, function () {}, function (e) {
-          alert('error saving page ' + page.ID + ' ' + e);
+          alert(mpatExplorerI18n.errorSavePage + page.ID + ' ' + e);
         });
       }
     }
@@ -908,35 +908,35 @@ function empty() {
   commonPageIO.get(function (pages) {
     pages.forEach(function (page) {
       commonPageIO.remove(page.id, function () {}, function (e) {
-        return alert("Could not delete page " + page.id);
+        return alert(mpatExplorerI18n.couldNotDeletePage + page.id);
       });
     });
     commonModelIO.get(function (pages) {
       pages.forEach(function (page) {
         commonModelIO.remove(page.ID, function () {}, function (e) {
-          return alert("Could not delete page " + page.ID);
+          return alert(mpatExplorerI18n.couldNotDeletePage + page.ID);
         });
       });
       commonLayoutIO.get(function (layouts) {
         layouts.forEach(function (layout) {
           commonLayoutIO.remove(layout.ID, function () {}, function (e) {
-            return alert("Could not delete layout " + layout.ID);
+            return alert(mpatExplorerI18n.couldNotDeleteLayout + layout.ID);
           });
         });
-        alert('end of DB emptying');
+        alert(mpatExplorerI18n.endOfDBemptying);
       }, function (e) {
-        return alert("Could not read DB for layouts");
+        return alert(mpatExplorerI18n.couldNotReadDB4Layout);
       });
     }, function () {
-      alert("Could not read DB for models");
+      alert(mpatExplorerI18n.couldNotReadDB4Model);
     });
   }, function () {
-    alert("Could not read DB for pages");
+    alert(mpatExplorerI18n.couldNotReadDB4Page);
   });
   commonMediaIO.get(function (medias) {
     medias.forEach(function (media) {
       commonMediaIO.remove(media.id, function () {}, function (e) {
-        return alert("Could not delete media " + media.id);
+        return alert(mpatExplorerI18n.couldNotDeleteMedia + media.id);
       });
     });
   });
@@ -1536,11 +1536,11 @@ var MediaIO = function () {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
     }
@@ -1554,11 +1554,11 @@ var MediaIO = function () {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
     }
@@ -1574,11 +1574,11 @@ var MediaIO = function () {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
     }
@@ -1594,11 +1594,11 @@ var MediaIO = function () {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
     }
@@ -1614,11 +1614,11 @@ var MediaIO = function () {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
     }
@@ -2048,6 +2048,7 @@ exports.d3process = d3process;
 /*
  * take a site info and make it into a D3.js package
  */
+
 function d3ize(wsgraph) {
   var d3g = {
     directed: true,

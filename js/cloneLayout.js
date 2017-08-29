@@ -10,7 +10,7 @@ export default function cloneLayout(layoutIndex) {
   }
   const explorer = explorerData(); // get the php table
   const layout = explorer[layoutIndex].page_layout;
-  const newName = userPrompt('Name of cloned layout ?');
+  const newName = userPrompt(mpatExplorerI18n.nameOfCloneLayout);
   if (newName === '') {
     return;
   }

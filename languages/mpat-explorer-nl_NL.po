@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
-"POT-Creation-Date: 2017-08-28 15:29:36+00:00\n"
-"PO-Revision-Date: 2017-08-28 17:35+0200\n"
+"POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
+"PO-Revision-Date: 2017-08-29 16:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -15,120 +15,263 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Explorer.php:19
+#: Explorer.php:22
 msgid "Explorer"
 msgstr "Verkenner"
 
-#. Plugin Name of the plugin/theme
-#: Explorer.php:31
-msgid "MPAT Explorer"
-msgstr "MPAT Verkenner"
+#: Explorer.php:37
+msgid "Complete info"
+msgstr "Volledige info"
 
-#: Explorer.php:31
-msgid "for"
-msgstr "voor"
+#: Explorer.php:38
+msgid "Website graph"
+msgstr "Grafische relationele weergave"
 
-#: Explorer.php:32
-msgid "Navigation model"
-msgstr "Navigatie model"
+#: Explorer.php:39
+msgid ""
+"Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
+msgstr ""
+"Zoom en pan met cursortoetsen en +/-. Sleep de knooppunten om de grafiek te "
+"wijzigen."
 
-#: Explorer.php:33
-msgid "Pages"
-msgstr "Paginas"
+#: Explorer.php:40
+msgid "Empty database"
+msgstr "Leeg database"
 
-#: Explorer.php:34
-msgid "Layouts"
-msgstr "Lay-outs"
+#: Explorer.php:41
+msgid "Empty DB"
+msgstr "Leeg DB"
 
-#: Explorer.php:36
-msgid "Page Text Editor"
-msgstr "Pagina Tekst Bewerker"
+#: Explorer.php:42
+msgid "Debug database"
+msgstr "Debug database"
 
-#: Explorer.php:44 Explorer.php:56
-msgid "Get page"
-msgstr "Verkrijg pagina"
+#: Explorer.php:43
+msgid "Debug DB"
+msgstr "Debug DB"
+
+#: Explorer.php:44
+msgid "error getting page "
+msgstr "fout om pagina te krijgen "
+
+#: Explorer.php:45
+msgid "page id is "
+msgstr "pagina id is "
 
 #: Explorer.php:46
-msgid "CHOOSE PAGE"
-msgstr "KIES PAGINA"
+msgid "error getting model "
+msgstr "fout bij het krijgen van een model "
 
-#: Explorer.php:53 Explorer.php:65
-msgid "Put"
-msgstr "Plaats"
+#: Explorer.php:47
+msgid "model id is "
+msgstr "model ID is "
+
+#: Explorer.php:48
+msgid "error getting option "
+msgstr "fout krijgen optie "
+
+#: Explorer.php:49
+msgid "option id is "
+msgstr "optie ID is "
+
+#: Explorer.php:50
+msgid "page updated "
+msgstr "pagina bijgewerkt "
+
+#: Explorer.php:51
+msgid "error putting page "
+msgstr "fout plaatsen pagina "
+
+#: Explorer.php:52
+msgid "model updated "
+msgstr "model bijgewerkt "
 
 #: Explorer.php:53
+msgid "error putting model "
+msgstr "fout model bij plaatsen "
+
+#: Explorer.php:54
+msgid "option updated "
+msgstr "optie bijgewerkt"
+
+#: Explorer.php:55
+msgid "error putting option "
+msgstr "fout bij plaatsen van optie "
+
+#: Explorer.php:56
+msgid "Name of cloned layout ?"
+msgstr "Naam van gekloonde opmaak ?"
+
+#: Explorer.php:57
+msgid "Error"
+msgstr "Fout"
+
+#: Explorer.php:58 Explorer.php:101
 msgid "Page"
 msgstr "Pagina"
 
-#: Explorer.php:56
+#: Explorer.php:59
+msgid "box"
+msgstr "box"
+
+#: Explorer.php:60
+msgid "state"
+msgstr "staat"
+
+#: Explorer.php:61
+msgid " has no layout"
+msgstr " heeft geen opmaak"
+
+#: Explorer.php:62
+msgid " has no content"
+msgstr " heeft geen inhoud"
+
+#: Explorer.php:63
+msgid " has empty content"
+msgstr " heeft geen content"
+
+#: Explorer.php:64
+msgid "error saving page "
+msgstr "fout bij het bewaren van pagina "
+
+#: Explorer.php:65
+msgid "end of DB processing"
+msgstr "einde van DB-verwerking"
+
+#: Explorer.php:66
+msgid "Could not delete page "
+msgstr "Kon pagina niet verwijderen "
+
+#: Explorer.php:67
+msgid "Could not delete layout "
+msgstr "Kon de layout niet verwijderen "
+
+#: Explorer.php:68
+msgid "Could not read DB for layouts"
+msgstr "Kon DB niet voor opmaak lezen"
+
+#: Explorer.php:69
+msgid "Could not read DB for models"
+msgstr "Kon DB niet lezen voor modellen"
+
+#: Explorer.php:70
+msgid "Could not read DB for pages"
+msgstr "Kon DB niet lezen voor pagina's"
+
+#: Explorer.php:71
+msgid "Could not delete media "
+msgstr "Kon media niet verwijderen"
+
+#: Explorer.php:72
+msgid "end of DB emptying"
+msgstr "einde van DB leegmaken"
+
+#. Plugin Name of the plugin/theme
+#: Explorer.php:79
+msgid "MPAT Explorer"
+msgstr "MPAT Verkenner"
+
+#: Explorer.php:79
+msgid "for"
+msgstr "voor"
+
+#: Explorer.php:80
+msgid "Navigation model"
+msgstr "Navigatie model"
+
+#: Explorer.php:81
+msgid "Pages"
+msgstr "Paginas"
+
+#: Explorer.php:82
+msgid "Layouts"
+msgstr "Lay-outs"
+
+#: Explorer.php:84
+msgid "Page Text Editor"
+msgstr "Pagina Tekst Bewerker"
+
+#: Explorer.php:92 Explorer.php:104
+msgid "Get page"
+msgstr "Verkrijg pagina"
+
+#: Explorer.php:94
+msgid "CHOOSE PAGE"
+msgstr "KIES PAGINA"
+
+#: Explorer.php:101 Explorer.php:113
+msgid "Put"
+msgstr "Plaats"
+
+#: Explorer.php:104
 msgid "model"
 msgstr "model"
 
-#: Explorer.php:58
+#: Explorer.php:106
 msgid "CHOOSE MODEL"
 msgstr "KIES MODEL"
 
-#: Explorer.php:65
+#: Explorer.php:113
 msgid "Model"
 msgstr "Model"
 
-#: Explorer.php:68
+#: Explorer.php:116
 msgid "Get option"
 msgstr "Verkrijg optie"
 
-#: Explorer.php:70
+#: Explorer.php:118
 msgid "CHOOSE OPTION"
 msgstr "KIES OPTIE"
 
-#: Explorer.php:71
+#: Explorer.php:119
 msgid "mpat_application_manager"
 msgstr "MPAT Applicatie Manager"
 
-#: Explorer.php:72
+#: Explorer.php:120
 msgid "timeline_scenario"
 msgstr "Tijdlijn scenario"
 
-#: Explorer.php:73
+#: Explorer.php:121
 msgid "dsmcc"
 msgstr "DSMCC"
 
-#: Explorer.php:74
+#: Explorer.php:122
 msgid "theme_mods_mpat_theme"
-msgstr "MPAT Thema"
+msgstr "theme_mods_mpat_theme"
 
-#: Explorer.php:81
+#: Explorer.php:129
 msgid "Put option"
 msgstr "Plaats optie"
 
-#: Explorer.php:86
+#: Explorer.php:134
 msgid "Page info with components, links and media"
 msgstr "Pagina informatie met betreffende componenten, links en media"
 
-#: Explorer.php:90
+#: Explorer.php:138
 msgid "Page title"
 msgstr "Pagina Titel"
 
-#: Explorer.php:91
+#: Explorer.php:139
 msgid "Content"
 msgstr "Content"
 
-#: Explorer.php:99
+#: Explorer.php:147
 msgid "Layout info with zones"
 msgstr "Lay-out informatie met zone"
 
-#: Explorer.php:103
+#: Explorer.php:151
 msgid "Layout name"
 msgstr "Lay-out titel"
 
-#: Explorer.php:104
+#: Explorer.php:152
 msgid "Used by"
 msgstr "Gebruikt door"
 
-#: Explorer.php:105
+#: Explorer.php:153
 msgid "Zones"
 msgstr "Zones"
 
-#: Explorer.php:106
+#: Explorer.php:154
 msgid "Actions"
 msgstr "Acties"
 
@@ -145,5 +288,8 @@ msgid "Jean-Claude Dufourd"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://github.com/jcdufourd/"
+msgid "https://github.com/MPAT-eu/"
 msgstr ""
+
+#~ msgid "Dude"
+#~ msgstr "Gozer"

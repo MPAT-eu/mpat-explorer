@@ -4,131 +4,271 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.b.i18n\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
-"POT-Creation-Date: 2017-08-28 15:29:36+00:00\n"
+"POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
+"PO-Revision-Date: 2017-08-29 16:31+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-28 17:52+0200\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.0.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en_GB\n"
 
-#: Explorer.php:19
+#: Explorer.php:22
 msgid "Explorer"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-#: Explorer.php:31
-msgid "MPAT Explorer"
+#: Explorer.php:37
+msgid "Complete info"
 msgstr ""
 
-#: Explorer.php:31
-msgid "for"
+#: Explorer.php:38
+msgid "Website graph"
 msgstr ""
 
-#: Explorer.php:32
-msgid "Navigation model"
+#: Explorer.php:39
+msgid "Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
 msgstr ""
 
-#: Explorer.php:33
-msgid "Pages"
+#: Explorer.php:40
+msgid "Empty database"
 msgstr ""
 
-#: Explorer.php:34
-msgid "Layouts"
+#: Explorer.php:41
+msgid "Empty DB"
 msgstr ""
 
-#: Explorer.php:36
-msgid "Page Text Editor"
+#: Explorer.php:42
+msgid "Debug database"
 msgstr ""
 
-#: Explorer.php:44 Explorer.php:56
-msgid "Get page"
+#: Explorer.php:43
+msgid "Debug DB"
+msgstr ""
+
+#: Explorer.php:44
+msgid "error getting page "
+msgstr ""
+
+#: Explorer.php:45
+msgid "page id is "
 msgstr ""
 
 #: Explorer.php:46
-msgid "CHOOSE PAGE"
+msgid "error getting model "
 msgstr ""
 
-#: Explorer.php:53 Explorer.php:65
-msgid "Put"
+#: Explorer.php:47
+msgid "model id is "
+msgstr ""
+
+#: Explorer.php:48
+msgid "error getting option "
+msgstr ""
+
+#: Explorer.php:49
+msgid "option id is "
+msgstr ""
+
+#: Explorer.php:50
+msgid "page updated "
+msgstr ""
+
+#: Explorer.php:51
+msgid "error putting page "
+msgstr ""
+
+#: Explorer.php:52
+msgid "model updated "
 msgstr ""
 
 #: Explorer.php:53
-msgid "Page"
+msgid "error putting model "
+msgstr ""
+
+#: Explorer.php:54
+msgid "option updated "
+msgstr ""
+
+#: Explorer.php:55
+msgid "error putting option "
 msgstr ""
 
 #: Explorer.php:56
-msgid "model"
+msgid "Name of cloned layout ?"
 msgstr ""
 
-#: Explorer.php:58
-msgid "CHOOSE MODEL"
+#: Explorer.php:57
+msgid "Error"
+msgstr ""
+
+#: Explorer.php:58 Explorer.php:101
+msgid "Page"
+msgstr ""
+
+#: Explorer.php:59
+msgid "box"
+msgstr ""
+
+#: Explorer.php:60
+msgid "state"
+msgstr ""
+
+#: Explorer.php:61
+msgid " has no layout"
+msgstr ""
+
+#: Explorer.php:62
+msgid " has no content"
+msgstr ""
+
+#: Explorer.php:63
+msgid " has empty content"
+msgstr ""
+
+#: Explorer.php:64
+msgid "error saving page "
 msgstr ""
 
 #: Explorer.php:65
-msgid "Model"
+msgid "end of DB processing"
+msgstr ""
+
+#: Explorer.php:66
+msgid "Could not delete page "
+msgstr ""
+
+#: Explorer.php:67
+msgid "Could not delete layout "
 msgstr ""
 
 #: Explorer.php:68
-msgid "Get option"
+msgid "Could not read DB for layouts"
+msgstr ""
+
+#: Explorer.php:69
+msgid "Could not read DB for models"
 msgstr ""
 
 #: Explorer.php:70
-msgid "CHOOSE OPTION"
+msgid "Could not read DB for pages"
 msgstr ""
 
 #: Explorer.php:71
-msgid "mpat_application_manager"
-msgstr "MPAT application manager"
+msgid "Could not delete media "
+msgstr ""
 
 #: Explorer.php:72
-msgid "timeline_scenario"
-msgstr "Timeline scenario"
-
-#: Explorer.php:73
-msgid "dsmcc"
+msgid "end of DB emptying"
 msgstr ""
 
-#: Explorer.php:74
-msgid "theme_mods_mpat_theme"
-msgstr "Theme MPAT"
+#. Plugin Name of the plugin/theme
+#: Explorer.php:79
+msgid "MPAT Explorer"
+msgstr ""
+
+#: Explorer.php:79
+msgid "for"
+msgstr ""
+
+#: Explorer.php:80
+msgid "Navigation model"
+msgstr ""
 
 #: Explorer.php:81
-msgid "Put option"
+msgid "Pages"
 msgstr ""
 
-#: Explorer.php:86
-msgid "Page info with components, links and media"
+#: Explorer.php:82
+msgid "Layouts"
 msgstr ""
 
-#: Explorer.php:90
-msgid "Page title"
+#: Explorer.php:84
+msgid "Page Text Editor"
 msgstr ""
 
-#: Explorer.php:91
-msgid "Content"
+#: Explorer.php:92 Explorer.php:104
+msgid "Get page"
 msgstr ""
 
-#: Explorer.php:99
-msgid "Layout info with zones"
+#: Explorer.php:94
+msgid "CHOOSE PAGE"
 msgstr ""
 
-#: Explorer.php:103
-msgid "Layout name"
+#: Explorer.php:101 Explorer.php:113
+msgid "Put"
 msgstr ""
 
 #: Explorer.php:104
-msgid "Used by"
-msgstr ""
-
-#: Explorer.php:105
-msgid "Zones"
+msgid "model"
 msgstr ""
 
 #: Explorer.php:106
+msgid "CHOOSE MODEL"
+msgstr ""
+
+#: Explorer.php:113
+msgid "Model"
+msgstr ""
+
+#: Explorer.php:116
+msgid "Get option"
+msgstr ""
+
+#: Explorer.php:118
+msgid "CHOOSE OPTION"
+msgstr ""
+
+#: Explorer.php:119
+msgid "mpat_application_manager"
+msgstr "MPAT application manager"
+
+#: Explorer.php:120
+msgid "timeline_scenario"
+msgstr "Timeline scenario"
+
+#: Explorer.php:121
+msgid "dsmcc"
+msgstr ""
+
+#: Explorer.php:122
+msgid "theme_mods_mpat_theme"
+msgstr "Theme MPAT"
+
+#: Explorer.php:129
+msgid "Put option"
+msgstr ""
+
+#: Explorer.php:134
+msgid "Page info with components, links and media"
+msgstr ""
+
+#: Explorer.php:138
+msgid "Page title"
+msgstr ""
+
+#: Explorer.php:139
+msgid "Content"
+msgstr ""
+
+#: Explorer.php:147
+msgid "Layout info with zones"
+msgstr ""
+
+#: Explorer.php:151
+msgid "Layout name"
+msgstr ""
+
+#: Explorer.php:152
+msgid "Used by"
+msgstr ""
+
+#: Explorer.php:153
+msgid "Zones"
+msgstr ""
+
+#: Explorer.php:154
 msgid "Actions"
 msgstr ""
 
@@ -145,5 +285,5 @@ msgid "Jean-Claude Dufourd"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://github.com/jcdufourd/"
+msgid "https://github.com/MPAT-eu/"
 msgstr ""

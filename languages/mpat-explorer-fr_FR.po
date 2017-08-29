@@ -4,131 +4,273 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.b.i18n\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
-"POT-Creation-Date: 2017-08-28 15:29:36+00:00\n"
+"POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
+"PO-Revision-Date: 2017-08-29 16:32+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-28 17:51+0200\n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.0.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr_FR\n"
 
-#: Explorer.php:19
+#: Explorer.php:22
 msgid "Explorer"
 msgstr "Explorateur"
 
-#. Plugin Name of the plugin/theme
-#: Explorer.php:31
-msgid "MPAT Explorer"
-msgstr "Explorateur MPAT"
+#: Explorer.php:37
+msgid "Complete info"
+msgstr "Informations complètes"
 
-#: Explorer.php:31
-msgid "for"
-msgstr "pour"
+#: Explorer.php:38
+msgid "Website graph"
+msgstr "Graphique du site Web"
 
-#: Explorer.php:32
-msgid "Navigation model"
-msgstr "Modèle de navigation"
-
-#: Explorer.php:33
-msgid "Pages"
+#: Explorer.php:39
+msgid "Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
 msgstr ""
+"Zoom et dérouler avec touches de curseur et +/- du clavier.\n"
+"Faites glisser les noeuds pour modifier le graphique."
 
-#: Explorer.php:34
-msgid "Layouts"
-msgstr "Mise en page"
+#: Explorer.php:40
+msgid "Empty database"
+msgstr "Vider la base de données"
 
-#: Explorer.php:36
-msgid "Page Text Editor"
-msgstr "Editeur texte"
+#: Explorer.php:41
+msgid "Empty DB"
+msgstr "Vider BDD"
 
-#: Explorer.php:44 Explorer.php:56
-msgid "Get page"
-msgstr "Charge page"
+#: Explorer.php:42
+msgid "Debug database"
+msgstr "Déboguer la base de données"
+
+#: Explorer.php:43
+msgid "Debug DB"
+msgstr "Déboguer BDD"
+
+#: Explorer.php:44
+msgid "error getting page "
+msgstr "erreur d'obtention de la page "
+
+#: Explorer.php:45
+msgid "page id is "
+msgstr "ID de la page est "
 
 #: Explorer.php:46
-msgid "CHOOSE PAGE"
-msgstr "Choisir page"
+msgid "error getting model "
+msgstr "erreur obtenue modèle "
 
-#: Explorer.php:53 Explorer.php:65
-msgid "Put"
-msgstr "Mettre"
+#: Explorer.php:47
+msgid "model id is "
+msgstr "Identifiant du modèle est "
+
+#: Explorer.php:48
+msgid "error getting option "
+msgstr "erreur obtenant l'option "
+
+#: Explorer.php:49
+msgid "option id is "
+msgstr "Identifiant de l'option est "
+
+#: Explorer.php:50
+msgid "page updated "
+msgstr "page mise à jour "
+
+#: Explorer.php:51
+msgid "error putting page "
+msgstr "erreur d'obtention de la page "
+
+#: Explorer.php:52
+msgid "model updated "
+msgstr "identifiant du modèle est "
 
 #: Explorer.php:53
+msgid "error putting model "
+msgstr "erreur obtenue modèle "
+
+#: Explorer.php:54
+msgid "option updated "
+msgstr "identifiant de l'option est "
+
+#: Explorer.php:55
+msgid "error putting option "
+msgstr "erreur obtenant l'option "
+
+#: Explorer.php:56
+msgid "Name of cloned layout ?"
+msgstr "Nom de la mise en page cloné ?"
+
+#: Explorer.php:57
+msgid "Error"
+msgstr "Erreur"
+
+#: Explorer.php:58 Explorer.php:101
 msgid "Page"
 msgstr ""
 
-#: Explorer.php:56
+#: Explorer.php:59
+msgid "box"
+msgstr "boîte"
+
+#: Explorer.php:60
+msgid "state"
+msgstr "état"
+
+#: Explorer.php:61
+msgid " has no layout"
+msgstr " n'a pas de mise en page"
+
+#: Explorer.php:62
+msgid " has no content"
+msgstr " n'a pas de contenu"
+
+#: Explorer.php:63
+msgid " has empty content"
+msgstr " contenu vide"
+
+#: Explorer.php:64
+msgid "error saving page "
+msgstr "erreur d'obtention de la page "
+
+#: Explorer.php:65
+msgid "end of DB processing"
+msgstr "fin du traitement de base de données"
+
+#: Explorer.php:66
+msgid "Could not delete page "
+msgstr "Impossible de supprimer la page "
+
+#: Explorer.php:67
+msgid "Could not delete layout "
+msgstr "Impossible de supprimer la mise en page "
+
+#: Explorer.php:68
+msgid "Could not read DB for layouts"
+msgstr "Impossible de lire la base de données pour les mises en page"
+
+#: Explorer.php:69
+msgid "Could not read DB for models"
+msgstr "Impossible de lire la base de données pour les modèles"
+
+#: Explorer.php:70
+msgid "Could not read DB for pages"
+msgstr "Impossible de lire la base de données pour les pages"
+
+#: Explorer.php:71
+msgid "Could not delete media "
+msgstr "Impossible de supprimer les médias "
+
+#: Explorer.php:72
+msgid "end of DB emptying"
+msgstr "fin de vidange BDD"
+
+#. Plugin Name of the plugin/theme
+#: Explorer.php:79
+msgid "MPAT Explorer"
+msgstr "Explorateur MPAT"
+
+#: Explorer.php:79
+msgid "for"
+msgstr "pour"
+
+#: Explorer.php:80
+msgid "Navigation model"
+msgstr "Modèle de navigation"
+
+#: Explorer.php:81
+msgid "Pages"
+msgstr ""
+
+#: Explorer.php:82
+msgid "Layouts"
+msgstr "Mise en page"
+
+#: Explorer.php:84
+msgid "Page Text Editor"
+msgstr "Editeur texte"
+
+#: Explorer.php:92 Explorer.php:104
+msgid "Get page"
+msgstr "Charge page"
+
+#: Explorer.php:94
+msgid "CHOOSE PAGE"
+msgstr "Choisir page"
+
+#: Explorer.php:101 Explorer.php:113
+msgid "Put"
+msgstr "Mettre"
+
+#: Explorer.php:104
 msgid "model"
 msgstr "modèle"
 
-#: Explorer.php:58
+#: Explorer.php:106
 msgid "CHOOSE MODEL"
 msgstr "CHOISIR MODELE"
 
-#: Explorer.php:65
+#: Explorer.php:113
 msgid "Model"
 msgstr "Modèle"
 
-#: Explorer.php:68
+#: Explorer.php:116
 msgid "Get option"
 msgstr "Obtient option"
 
-#: Explorer.php:70
+#: Explorer.php:118
 msgid "CHOOSE OPTION"
 msgstr "CHOISIR OPTION"
 
-#: Explorer.php:71
+#: Explorer.php:119
 msgid "mpat_application_manager"
 msgstr "Gestionnaire d’applications MPAT"
 
-#: Explorer.php:72
+#: Explorer.php:120
 msgid "timeline_scenario"
 msgstr "Scénario"
 
-#: Explorer.php:73
+#: Explorer.php:121
 msgid "dsmcc"
-msgstr ""
+msgstr "DSMCC"
 
-#: Explorer.php:74
+#: Explorer.php:122
 msgid "theme_mods_mpat_theme"
 msgstr "Thème MPAT"
 
-#: Explorer.php:81
+#: Explorer.php:129
 msgid "Put option"
 msgstr "Placer option"
 
-#: Explorer.php:86
+#: Explorer.php:134
 msgid "Page info with components, links and media"
 msgstr "Informations sur la page avec les composants, les liens et les médias"
 
-#: Explorer.php:90
+#: Explorer.php:138
 msgid "Page title"
 msgstr "Titre de page"
 
-#: Explorer.php:91
+#: Explorer.php:139
 msgid "Content"
 msgstr "Contenu"
 
-#: Explorer.php:99
+#: Explorer.php:147
 msgid "Layout info with zones"
 msgstr "Information de mise en page avec zones"
 
-#: Explorer.php:103
+#: Explorer.php:151
 msgid "Layout name"
 msgstr "Nom de mise en page"
 
-#: Explorer.php:104
+#: Explorer.php:152
 msgid "Used by"
 msgstr "Utilisé par"
 
-#: Explorer.php:105
+#: Explorer.php:153
 msgid "Zones"
-msgstr ""
+msgstr "Zones"
 
-#: Explorer.php:106
+#: Explorer.php:154
 msgid "Actions"
 msgstr ""
 
@@ -145,5 +287,8 @@ msgid "Jean-Claude Dufourd"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://github.com/jcdufourd/"
+msgid "https://github.com/MPAT-eu/"
 msgstr ""
+
+#~ msgid "Dude"
+#~ msgstr "Mec"

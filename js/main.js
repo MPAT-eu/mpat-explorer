@@ -14,7 +14,7 @@ function preprocess(o) {
   };
   o.forEach((obj) => {
     if (obj.page) {
-      window.MPAT.pages['p'+obj.page.ID] = obj.page;
+      window.MPAT.pages['p' + obj.page.ID] = obj.page;
       window.MPAT.pageArray.push(obj.page);
     } else if (obj.page_layout) {
       window.MPAT.layouts['l' + obj.page_layout.ID] = obj.page_layout;
@@ -89,7 +89,7 @@ export function process(o) {
   // shown as a JSON object after the tables
   const pre = document.createElement('details');
   let sum = document.createElement('summary');
-  sum.textContent = 'Complete info';
+  sum.textContent = mpatExplorerI18n.completeInfo;
   pre.appendChild(sum);
   const bq = document.createElement('blockquote');
   pre.appendChild(bq);
@@ -131,10 +131,10 @@ export function process(o) {
   // insert the web site map at the end
   const det2 = document.createElement('h3');
   ip.appendChild(det2);
-  det2.textContent = 'Website graph';
+  det2.textContent = mpatExplorerI18n.websiteGraph;
   const det3 = document.createElement('p');
   ip.appendChild(det3);
-  det3.textContent = 'Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph.';
+  det3.textContent = mpatExplorerI18n.zoom;
   const d3g = d3ize(websitegraph);
   d3process(d3g);
   const hr = document.createElement('hr');
@@ -142,14 +142,14 @@ export function process(o) {
   ip.appendChild(hr);
   const bu = document.createElement('button');
   bu.id = "btn-cleanall";
-  bu.title = "Empty database";
-  bu.textContent = 'Empty DB';
+  bu.title = mpatExplorerI18n.emptyDatabase;
+  bu.textContent = mpatExplorerI18n.emptyDB;
   bu.addEventListener('click', empty);
   ip.appendChild(bu);
   const bu2 = document.createElement('button');
   bu2.id = "btn-debugdb";
-  bu2.title = "Debug database";
-  bu2.textContent = 'Debug DB';
+  bu2.title = mpatExplorerI18n.debugDatabase;
+  bu2.textContent = mpatExplorerI18n.debugDB;
   bu2.addEventListener('click', debugDb);
   ip.appendChild(bu2);
   const but2 = document.getElementById('explorerPutPage');
@@ -174,7 +174,7 @@ export function process(o) {
         opt.textContent = name;
       });
     },
-    (e) => {}
+    (e) => { }
   );
   selector2.addEventListener('change', explorerGetModel);
   const but3 = document.getElementById('explorerPutModel');
@@ -201,19 +201,19 @@ function explorerGetPage() {
   if (pageId > 0) {
     commonPageIO.getPage(
       pageId,
-      (page)=> {
+      (page) => {
         currentPage = page;
         delete page.mpat_content.layout;
         document.getElementById('mpat-text-editing').value =
           JSON.stringify(page.mpat_content, null, 4);
       },
-      (error)=> {
+      (error) => {
         document.getElementById('mpat-text-editing').value =
-          "error getting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+          mpatExplorerI18n.errorGettingPage + pageId + "\n" + JSON.stringify(error, null, 2);
       }
     );
   } else {
-    window.alert("page id is "+pageId);
+    window.alert(mpatExplorerI18n.pageIs + pageId);
   }
 }
 
@@ -224,19 +224,19 @@ function explorerGetModel() {
   if (modelId > 0) {
     commonModelIO.getModel(
       modelId,
-      (model)=> {
+      (model) => {
         currentModel = model;
         delete model.mpat_content.layout;
         document.getElementById('mpat-text-editing').value =
           JSON.stringify(model.mpat_content, null, 4);
       },
-      (error)=> {
+      (error) => {
         document.getElementById('mpat-text-editing').value =
-          "error getting model "+modelId+"\n"+JSON.stringify(error, null, 2);
+          mpatExplorerI18n.errorGettingModel + modelId + "\n" + JSON.stringify(error, null, 2);
       }
     );
   } else {
-    window.alert("model id is "+modelId);
+    window.alert(mpatExplorerI18n.modelIs + modelId);
   }
 }
 
@@ -247,18 +247,18 @@ function explorerGetOption() {
   if (optionId !== "0") {
     commonOptionIO.getModel(
       optionId,
-      (option)=> {
+      (option) => {
         currentOption = option;
         document.getElementById('mpat-text-editing').value =
           JSON.stringify(option, null, 4);
       },
-      (error)=> {
+      (error) => {
         document.getElementById('mpat-text-editing').value =
-          "error getting option "+optionId+"\n"+JSON.stringify(error, null, 2);
+          mpatExplorerI18n.erroGettingOption + optionId + "\n" + JSON.stringify(error, null, 2);
       }
     );
   } else {
-    window.alert("option id is "+optionId);
+    window.alert(mpatExplorerI18n.optionIs + optionId);
   }
 }
 
@@ -269,13 +269,13 @@ function explorerPutPage() {
   commonPageIO.put(
     pageId,
     currentPage,
-    (res)=> {
+    (res) => {
       document.getElementById('mpat-text-editing').value =
-        "page updated "+pageId;
+        mpatExplorerI18n.pageUpdated + pageId;
     },
-    (error)=> {
+    (error) => {
       document.getElementById('mpat-text-editing').value =
-        "error putting page "+pageId+"\n"+JSON.stringify(error, null, 2);
+        mpatExplorerI18n.errPutPage + pageId + "\n" + JSON.stringify(error, null, 2);
     }
   );
 }
@@ -287,13 +287,13 @@ function explorerPutModel() {
   commonModelIO.put(
     modelId,
     currentModel,
-    (res)=> {
+    (res) => {
       document.getElementById('mpat-text-editing').value =
-        "model updated "+modelId;
+        mpatExplorerI18n.modelUpdated + modelId;
     },
-    (error)=> {
+    (error) => {
       document.getElementById('mpat-text-editing').value =
-        "error putting model "+modelId+"\n"+JSON.stringify(error, null, 2);
+        mpatExplorerI18n.errPutModel + modelId + "\n" + JSON.stringify(error, null, 2);
     }
   );
 }
@@ -305,13 +305,13 @@ function explorerPutOption() {
   commonOptionIO.put(
     optionId,
     currentOption,
-    (res)=> {
+    (res) => {
       document.getElementById('mpat-text-editing').value =
-        "option updated "+optionId;
+        mpatExplorerI18n.optionUpdated + optionId;
     },
-    (error)=> {
+    (error) => {
       document.getElementById('mpat-text-editing').value =
-        "error putting option "+optionId+"\n"+JSON.stringify(error, null, 2);
+        mpatExplorerI18n.errPutOption + optionId + "\n" + JSON.stringify(error, null, 2);
     }
   );
 }
@@ -324,16 +324,16 @@ function debugDb() {
     let toUpdate = false;
     const layout = window.MPAT.layouts['l' + page.meta.mpat_content.layoutId];
     if (!layout) {
-      alert(`Page ${name} has no layout`);
+      alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.hasNoLayout}`);
       return;
     }
     const layoutBoxes = layout.meta.mpat_content.layout;
     if (content === undefined) {
-      alert(`Page ${name} has no content`);
+      alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.hasNoContent}`);
     } else {
       const contentKeys = Object.keys(content);
       if (!Array.isArray(contentKeys) || contentKeys.length === 0) {
-        alert(`Page ${name} has empty content`);
+        alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.hasEmptyContent}`);
       } else {
         Object.keys(content).forEach((boxName) => {
           if (!layoutBoxes.find(b => b.i === boxName)) {
@@ -346,19 +346,19 @@ function debugDb() {
               const component = boxContent[stateName];
               const type = component.type;
               if (typeof type !== 'string') {
-                alert(`Page ${name} box ${boxName} state ${stateName} has non string type ${type}`);
+                alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.box} ${boxName} ${mpatExplorerI18n.state} ${stateName} has non string type ${type}`);
               }
               const data = component.data;
               if (data && typeof data !== 'object') {
-                alert(`Page ${name} box ${boxName} state ${stateName} has non object data ${data}`);
+                alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.box} ${boxName} ${mpatExplorerI18n.state} ${stateName} has non object data ${data}`);
                 if (typeof data === 'string') {
-                  component.data = {text: data};
+                  component.data = { text: data };
                   toUpdate = true;
                 }
               }
               const styles = component.styles;
               if (styles && typeof styles !== 'object') {
-                alert(`Page ${name} box ${boxName} state ${stateName} has non object styles ${styles}`);
+                alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.box} ${boxName} ${mpatExplorerI18n.state} ${stateName} has non object styles ${styles}`);
               }
             });
           }
@@ -381,7 +381,7 @@ function debugDb() {
           () => {
           },
           (e) => {
-            alert('error saving page ' + page.ID + ' ' + e);
+            alert(mpatExplorerI18n.errorSavePage + page.ID + ' ' + e);
           }
         );
       }
@@ -396,8 +396,8 @@ function empty() {
       pages.forEach(page => {
         commonPageIO.remove(
           page.id,
-          () => {},
-          (e) => alert("Could not delete page " + page.id)
+          () => { },
+          (e) => alert(mpatExplorerI18n.couldNotDeletePage+ page.id)
         )
       });
       commonModelIO.get(
@@ -405,8 +405,8 @@ function empty() {
           pages.forEach(page => {
             commonModelIO.remove(
               page.ID,
-              () => {},
-              (e) => alert("Could not delete page " + page.ID)
+              () => { },
+              (e) => alert(mpatExplorerI18n.couldNotDeletePage+ page.ID)
             )
           });
           commonLayoutIO.get(
@@ -414,22 +414,22 @@ function empty() {
               layouts.forEach(layout => {
                 commonLayoutIO.remove(
                   layout.ID,
-                  () => {},
-                  (e) => alert("Could not delete layout " + layout.ID)
+                  () => { },
+                  (e) => alert(mpatExplorerI18n.couldNotDeleteLayout + layout.ID)
                 )
               });
-              alert('end of DB emptying');
+              alert(mpatExplorerI18n.endOfDBemptying);
             },
-            (e) => alert("Could not read DB for layouts")
+            (e) => alert(mpatExplorerI18n.couldNotReadDB4Layout)
           )
         },
         () => {
-          alert("Could not read DB for models");
+          alert(mpatExplorerI18n.couldNotReadDB4Model);
         }
       )
     },
     () => {
-      alert("Could not read DB for pages");
+      alert(mpatExplorerI18n.couldNotReadDB4Page);
     }
   );
   commonMediaIO.get(
@@ -437,8 +437,8 @@ function empty() {
       medias.forEach((media) => {
         commonMediaIO.remove(
           media.id,
-          () => {},
-          (e) => alert("Could not delete media " + media.id)
+          () => { },
+          (e) => alert(mpatExplorerI18n.couldNotDeleteMedia + media.id)
         )
       });
     }
