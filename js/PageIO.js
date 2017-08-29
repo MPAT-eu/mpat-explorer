@@ -30,11 +30,11 @@ export default class PageIO {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
   }
@@ -50,11 +50,11 @@ export default class PageIO {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
   }
@@ -69,11 +69,11 @@ export default class PageIO {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
   }
@@ -88,11 +88,11 @@ export default class PageIO {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
   }
@@ -107,11 +107,11 @@ export default class PageIO {
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
-          console.log('Error', e.response.status);
+          console.log(mpatExplorerI18n.error, e.response.status);
           console.log(e.response.data.message);
         } else {
           // Something happened in setting up the request that triggered an Error
-          console.log('Error', e.message);
+          console.log(mpatExplorerI18n.error, e.message);
         }
       });
   }
