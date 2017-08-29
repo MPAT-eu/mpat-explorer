@@ -3,9 +3,9 @@
  * Plugin Name: MPAT Explorer
  * Plugin URI: https://github.com/MPAT-eu/mpat-explorer/
  * Description: Explorer MPAT sites
- * Version: 1.0.b.i18n
+ * Version: 1.0.2
  * Author: Jean-Claude Dufourd
- * Author URI: https://github.com/jcdufourd/
+ * Author URI: https://github.com/MPAT-eu/
  * Text Domain: mpat-explorer
  * Domain Path: /languages
  * License: GPL2

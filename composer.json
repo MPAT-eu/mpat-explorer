@@ -1,7 +1,7 @@
 {
     "name" : "mpat/mpat-explorer",
     "description" : "MPAT explorer",
-    "version" : "1.0.0",
+    "version" : "1.0.1",
     "license" : "GPL2",
     "authors" : [{
         "name" : "Jean-Claude Dufourd",
@@ -11,7 +11,7 @@
     "repositories" : [
         {
             "type" : "vcs",
-            "url" : "git@github.com:jcdufourd/mpat-explorer.git"
+            "url" : "git@github.com:MPAT-eu/mpat-explorer.git"
         }
     ],
     "type" : "wordpress-plugin"
