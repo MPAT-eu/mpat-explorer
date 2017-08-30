@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.b.i18n\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
 "POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
-"PO-Revision-Date: 2017-08-29 16:31+0200\n"
+"PO-Revision-Date: 2017-08-30 15:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi_FI\n"
@@ -17,208 +17,208 @@ msgstr ""
 
 #: Explorer.php:22
 msgid "Explorer"
-msgstr ""
+msgstr "Tutkimusmatkailijatutkimusmatkailija"
 
 #: Explorer.php:37
 msgid "Complete info"
-msgstr ""
+msgstr "Täydelliset tiedot"
 
 #: Explorer.php:38
 msgid "Website graph"
-msgstr ""
+msgstr "Verkkosivujen kaavio"
 
 #: Explorer.php:39
 msgid "Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
-msgstr ""
+msgstr "Zoomaa ja panoroi kohdistinpainikkeilla ja +/-. Vedä solmuja muokkaamalla kaaviota."
 
 #: Explorer.php:40
 msgid "Empty database"
-msgstr ""
+msgstr "Tyhjä tietokanta"
 
 #: Explorer.php:41
 msgid "Empty DB"
-msgstr ""
+msgstr "Tyhjä TK"
 
 #: Explorer.php:42
 msgid "Debug database"
-msgstr ""
+msgstr "Debug-tietokanta"
 
 #: Explorer.php:43
 msgid "Debug DB"
-msgstr ""
+msgstr "Debug-TK"
 
 #: Explorer.php:44
 msgid "error getting page "
-msgstr ""
+msgstr "virhe sivuilta "
 
 #: Explorer.php:45
 msgid "page id is "
-msgstr ""
+msgstr "sivun tunnus on "
 
 #: Explorer.php:46
 msgid "error getting model "
-msgstr ""
+msgstr "virheen saaminen mallista "
 
 #: Explorer.php:47
 msgid "model id is "
-msgstr ""
+msgstr "malli id on "
 
 #: Explorer.php:48
 msgid "error getting option "
-msgstr ""
+msgstr "virhe saada vaihtoehto "
 
 #: Explorer.php:49
 msgid "option id is "
-msgstr ""
+msgstr "vaihtoehto on "
 
 #: Explorer.php:50
 msgid "page updated "
-msgstr ""
+msgstr "sivu päivitetty "
 
 #: Explorer.php:51
 msgid "error putting page "
-msgstr ""
+msgstr "virhe laittaa sivu "
 
 #: Explorer.php:52
 msgid "model updated "
-msgstr ""
+msgstr "malli päivitetty "
 
 #: Explorer.php:53
 msgid "error putting model "
-msgstr ""
+msgstr "virheen asettamismalli "
 
 #: Explorer.php:54
 msgid "option updated "
-msgstr ""
+msgstr "vaihtoehto päivitetty "
 
 #: Explorer.php:55
 msgid "error putting option "
-msgstr ""
+msgstr "virhe asettamalla vaihtoehto "
 
 #: Explorer.php:56
 msgid "Name of cloned layout ?"
-msgstr ""
+msgstr "Kloonattujen asettelun nimi?"
 
 #: Explorer.php:57
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: Explorer.php:58 Explorer.php:101
 msgid "Page"
-msgstr ""
+msgstr "Sivu"
 
 #: Explorer.php:59
 msgid "box"
-msgstr ""
+msgstr "laatikko"
 
 #: Explorer.php:60
 msgid "state"
-msgstr ""
+msgstr "osavaltio"
 
 #: Explorer.php:61
 msgid " has no layout"
-msgstr ""
+msgstr " ei ole ulkoasua"
 
 #: Explorer.php:62
 msgid " has no content"
-msgstr ""
+msgstr " ei ole sisältöä"
 
 #: Explorer.php:63
 msgid " has empty content"
-msgstr ""
+msgstr " on tyhjä sisältö"
 
 #: Explorer.php:64
 msgid "error saving page "
-msgstr ""
+msgstr "virheilmoitussivu "
 
 #: Explorer.php:65
 msgid "end of DB processing"
-msgstr ""
+msgstr "Loppuun TK käsittely"
 
 #: Explorer.php:66
 msgid "Could not delete page "
-msgstr ""
+msgstr "Sivua ei voitu poistaa "
 
 #: Explorer.php:67
 msgid "Could not delete layout "
-msgstr ""
+msgstr "Asettavuutta ei voitu poistaa "
 
 #: Explorer.php:68
 msgid "Could not read DB for layouts"
-msgstr ""
+msgstr "TK: n ulkoasua ei voitu lukea"
 
 #: Explorer.php:69
 msgid "Could not read DB for models"
-msgstr ""
+msgstr "Mallien TK ei voitu lukea"
 
 #: Explorer.php:70
 msgid "Could not read DB for pages"
-msgstr ""
+msgstr "Sivua ei voitu lukea TK: ltä"
 
 #: Explorer.php:71
 msgid "Could not delete media "
-msgstr ""
+msgstr "Mediaa ei voitu poistaa "
 
 #: Explorer.php:72
 msgid "end of DB emptying"
-msgstr ""
+msgstr "TK tyhjennyksen loppu"
 
 #. Plugin Name of the plugin/theme
 #: Explorer.php:79
 msgid "MPAT Explorer"
-msgstr ""
+msgstr "MPAT Tutkimusmatkailija"
 
 #: Explorer.php:79
 msgid "for"
-msgstr ""
+msgstr "hyväksi"
 
 #: Explorer.php:80
 msgid "Navigation model"
-msgstr ""
+msgstr "Navigointi malli"
 
 #: Explorer.php:81
 msgid "Pages"
-msgstr ""
+msgstr "Sivut"
 
 #: Explorer.php:82
 msgid "Layouts"
-msgstr ""
+msgstr "Ulkoasuja"
 
 #: Explorer.php:84
 msgid "Page Text Editor"
-msgstr ""
+msgstr "Sivun tekstieditori"
 
 #: Explorer.php:92 Explorer.php:104
 msgid "Get page"
-msgstr ""
+msgstr "Hanki sivu"
 
 #: Explorer.php:94
 msgid "CHOOSE PAGE"
-msgstr ""
+msgstr "VALITSE SIVU"
 
 #: Explorer.php:101 Explorer.php:113
 msgid "Put"
-msgstr ""
+msgstr "Laittaa"
 
 #: Explorer.php:104
 msgid "model"
-msgstr ""
+msgstr "malli-"
 
 #: Explorer.php:106
 msgid "CHOOSE MODEL"
-msgstr ""
+msgstr "VALITSE MALLI"
 
 #: Explorer.php:113
 msgid "Model"
-msgstr ""
+msgstr "Malli"
 
 #: Explorer.php:116
 msgid "Get option"
-msgstr ""
+msgstr "Hanki vaihtoehto"
 
 #: Explorer.php:118
 msgid "CHOOSE OPTION"
-msgstr ""
+msgstr "VALITSE OPTION"
 
 #: Explorer.php:119
 msgid "mpat_application_manager"
@@ -238,39 +238,39 @@ msgstr ""
 
 #: Explorer.php:129
 msgid "Put option"
-msgstr ""
+msgstr "Laita vaihtoehto"
 
 #: Explorer.php:134
 msgid "Page info with components, links and media"
-msgstr ""
+msgstr "Sivun tiedot komponenteilla, linkillä ja medialla"
 
 #: Explorer.php:138
 msgid "Page title"
-msgstr ""
+msgstr "Sivun otsikko"
 
 #: Explorer.php:139
 msgid "Content"
-msgstr ""
+msgstr "Pitoisuus"
 
 #: Explorer.php:147
 msgid "Layout info with zones"
-msgstr ""
+msgstr "Layout-tiedot vyöhykkeillä"
 
 #: Explorer.php:151
 msgid "Layout name"
-msgstr ""
+msgstr "Asettelun nimi"
 
 #: Explorer.php:152
 msgid "Used by"
-msgstr ""
+msgstr "Käytetty"
 
 #: Explorer.php:153
 msgid "Zones"
-msgstr ""
+msgstr "Zones"
 
 #: Explorer.php:154
 msgid "Actions"
-msgstr ""
+msgstr "Toimet"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/MPAT-eu/mpat-explorer/"
@@ -278,7 +278,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid "Explorer MPAT sites"
-msgstr ""
+msgstr "Tutki MPAT-sivustoja"
 
 #. Author of the plugin/theme
 msgid "Jean-Claude Dufourd"
