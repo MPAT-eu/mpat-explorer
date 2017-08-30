@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
 "POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
-"PO-Revision-Date: 2017-08-29 16:32+0200\n"
+"PO-Revision-Date: 2017-08-30 15:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -92,7 +92,7 @@ msgstr "fout model bij plaatsen "
 
 #: Explorer.php:54
 msgid "option updated "
-msgstr "optie bijgewerkt"
+msgstr "optie bijgewerkt "
 
 #: Explorer.php:55
 msgid "error putting option "
@@ -160,7 +160,7 @@ msgstr "Kon DB niet lezen voor pagina's"
 
 #: Explorer.php:71
 msgid "Could not delete media "
-msgstr "Kon media niet verwijderen"
+msgstr "Kon media niet verwijderen "
 
 #: Explorer.php:72
 msgid "end of DB emptying"

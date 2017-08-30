@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.b.i18n\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
 "POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
-"PO-Revision-Date: 2017-08-30 15:21+0200\n"
+"PO-Revision-Date: 2017-08-30 15:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fi_FI\n"
@@ -28,8 +28,11 @@ msgid "Website graph"
 msgstr "Verkkosivujen kaavio"
 
 #: Explorer.php:39
-msgid "Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
-msgstr "Zoomaa ja panoroi kohdistinpainikkeilla ja +/-. Vedä solmuja muokkaamalla kaaviota."
+msgid ""
+"Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
+msgstr ""
+"Zoomaa ja panoroi kohdistinpainikkeilla ja +/-. Vedä solmuja muokkaamalla "
+"kaaviota."
 
 #: Explorer.php:40
 msgid "Empty database"
@@ -133,7 +136,7 @@ msgstr "virheilmoitussivu "
 
 #: Explorer.php:65
 msgid "end of DB processing"
-msgstr "Loppuun TK käsittely"
+msgstr "loppuun TK käsittely"
 
 #: Explorer.php:66
 msgid "Could not delete page "
@@ -202,7 +205,7 @@ msgstr "Laittaa"
 
 #: Explorer.php:104
 msgid "model"
-msgstr "malli-"
+msgstr "malli"
 
 #: Explorer.php:106
 msgid "CHOOSE MODEL"

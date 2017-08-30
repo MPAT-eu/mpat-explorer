@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.b.i18n\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
 "POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
-"PO-Revision-Date: 2017-08-29 16:32+0200\n"
+"PO-Revision-Date: 2017-08-30 15:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -17,208 +17,211 @@ msgstr ""
 
 #: Explorer.php:22
 msgid "Explorer"
-msgstr ""
+msgstr "Esploratore"
 
 #: Explorer.php:37
 msgid "Complete info"
-msgstr ""
+msgstr "Informazioni complete"
 
 #: Explorer.php:38
 msgid "Website graph"
-msgstr ""
+msgstr "Grafico del sito"
 
 #: Explorer.php:39
-msgid "Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
+msgid ""
+"Zoom and pan with cursor keys and +/-. Drag the nodes to modify the graph."
 msgstr ""
+"Zoom e pan con i tasti cursore e +/-. Trascinare i nodi per modificare il "
+"grafico."
 
 #: Explorer.php:40
 msgid "Empty database"
-msgstr ""
+msgstr "Database vuoto"
 
 #: Explorer.php:41
 msgid "Empty DB"
-msgstr ""
+msgstr "DB vuoto"
 
 #: Explorer.php:42
 msgid "Debug database"
-msgstr ""
+msgstr "Debug database"
 
 #: Explorer.php:43
 msgid "Debug DB"
-msgstr ""
+msgstr "Debug DB"
 
 #: Explorer.php:44
 msgid "error getting page "
-msgstr ""
+msgstr "errore nella pagina "
 
 #: Explorer.php:45
 msgid "page id is "
-msgstr ""
+msgstr "la pagina id è "
 
 #: Explorer.php:46
 msgid "error getting model "
-msgstr ""
+msgstr "errore che ottiene il modello "
 
 #: Explorer.php:47
 msgid "model id is "
-msgstr ""
+msgstr "modello id è "
 
 #: Explorer.php:48
 msgid "error getting option "
-msgstr ""
+msgstr "errore che ottiene l'opzione "
 
 #: Explorer.php:49
 msgid "option id is "
-msgstr ""
+msgstr "l'opzione id è "
 
 #: Explorer.php:50
 msgid "page updated "
-msgstr ""
+msgstr "pagina aggiornata "
 
 #: Explorer.php:51
 msgid "error putting page "
-msgstr ""
+msgstr "errore di messa pagina "
 
 #: Explorer.php:52
 msgid "model updated "
-msgstr ""
+msgstr "modello aggiornato "
 
 #: Explorer.php:53
 msgid "error putting model "
-msgstr ""
+msgstr "errore di messa a modello "
 
 #: Explorer.php:54
 msgid "option updated "
-msgstr ""
+msgstr "opzione aggiornata "
 
 #: Explorer.php:55
 msgid "error putting option "
-msgstr ""
+msgstr "errore di messa in opzione "
 
 #: Explorer.php:56
 msgid "Name of cloned layout ?"
-msgstr ""
+msgstr "Nome del layout clonato?"
 
 #: Explorer.php:57
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: Explorer.php:58 Explorer.php:101
 msgid "Page"
-msgstr ""
+msgstr "Pagina"
 
 #: Explorer.php:59
 msgid "box"
-msgstr ""
+msgstr "scatola"
 
 #: Explorer.php:60
 msgid "state"
-msgstr ""
+msgstr "stato"
 
 #: Explorer.php:61
 msgid " has no layout"
-msgstr ""
+msgstr " non ha layout"
 
 #: Explorer.php:62
 msgid " has no content"
-msgstr ""
+msgstr " non ha alcun contenuto"
 
 #: Explorer.php:63
 msgid " has empty content"
-msgstr ""
+msgstr " ha un contenuto vuoto"
 
 #: Explorer.php:64
 msgid "error saving page "
-msgstr ""
+msgstr "pagina di risparmio errori "
 
 #: Explorer.php:65
 msgid "end of DB processing"
-msgstr ""
+msgstr "fine dell'elaborazione DB"
 
 #: Explorer.php:66
 msgid "Could not delete page "
-msgstr ""
+msgstr "Impossibile eliminare la pagina "
 
 #: Explorer.php:67
 msgid "Could not delete layout "
-msgstr ""
+msgstr "Impossibile eliminare il layout "
 
 #: Explorer.php:68
 msgid "Could not read DB for layouts"
-msgstr ""
+msgstr "Impossibile leggere DB per i layout"
 
 #: Explorer.php:69
 msgid "Could not read DB for models"
-msgstr ""
+msgstr "Impossibile leggere DB per i modelli"
 
 #: Explorer.php:70
 msgid "Could not read DB for pages"
-msgstr ""
+msgstr "Impossibile leggere DB per le pagine"
 
 #: Explorer.php:71
 msgid "Could not delete media "
-msgstr ""
+msgstr "Impossibile eliminare i supporti "
 
 #: Explorer.php:72
 msgid "end of DB emptying"
-msgstr ""
+msgstr "fine dello svuotamento DB"
 
 #. Plugin Name of the plugin/theme
 #: Explorer.php:79
 msgid "MPAT Explorer"
-msgstr ""
+msgstr "MPAT Esploratore"
 
 #: Explorer.php:79
 msgid "for"
-msgstr ""
+msgstr "per"
 
 #: Explorer.php:80
 msgid "Navigation model"
-msgstr ""
+msgstr "Modello di navigazione"
 
 #: Explorer.php:81
 msgid "Pages"
-msgstr ""
+msgstr "Pagine"
 
 #: Explorer.php:82
 msgid "Layouts"
-msgstr ""
+msgstr "Disposizione"
 
 #: Explorer.php:84
 msgid "Page Text Editor"
-msgstr ""
+msgstr "Editor dei testi di pagina"
 
 #: Explorer.php:92 Explorer.php:104
 msgid "Get page"
-msgstr ""
+msgstr "Ottieni la pagina"
 
 #: Explorer.php:94
 msgid "CHOOSE PAGE"
-msgstr ""
+msgstr "SCEGLI LA PAGINA"
 
 #: Explorer.php:101 Explorer.php:113
 msgid "Put"
-msgstr ""
+msgstr "Mettere"
 
 #: Explorer.php:104
 msgid "model"
-msgstr ""
+msgstr "modello"
 
 #: Explorer.php:106
 msgid "CHOOSE MODEL"
-msgstr ""
+msgstr "SCEGLI IL MODELLO"
 
 #: Explorer.php:113
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 #: Explorer.php:116
 msgid "Get option"
-msgstr ""
+msgstr "Ottieni l'opzione"
 
 #: Explorer.php:118
 msgid "CHOOSE OPTION"
-msgstr ""
+msgstr "SCEGLIERE OPZIONI"
 
 #: Explorer.php:119
 msgid "mpat_application_manager"
@@ -238,39 +241,39 @@ msgstr ""
 
 #: Explorer.php:129
 msgid "Put option"
-msgstr ""
+msgstr "Mettere l'opzione"
 
 #: Explorer.php:134
 msgid "Page info with components, links and media"
-msgstr ""
+msgstr "Informazioni di pagina con componenti, collegamenti e supporti"
 
 #: Explorer.php:138
 msgid "Page title"
-msgstr ""
+msgstr "Titolo di pagina"
 
 #: Explorer.php:139
 msgid "Content"
-msgstr ""
+msgstr "Soddisfare"
 
 #: Explorer.php:147
 msgid "Layout info with zones"
-msgstr ""
+msgstr "Layout informazioni con le zone"
 
 #: Explorer.php:151
 msgid "Layout name"
-msgstr ""
+msgstr "Nome del layout"
 
 #: Explorer.php:152
 msgid "Used by"
-msgstr ""
+msgstr "Usato da"
 
 #: Explorer.php:153
 msgid "Zones"
-msgstr ""
+msgstr "zone"
 
 #: Explorer.php:154
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/MPAT-eu/mpat-explorer/"
@@ -278,7 +281,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid "Explorer MPAT sites"
-msgstr ""
+msgstr "Esplora siti MPAT"
 
 #. Author of the plugin/theme
 msgid "Jean-Claude Dufourd"
