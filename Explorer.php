@@ -19,7 +19,7 @@ class Explorer
     function general_init()
     {
         load_plugin_textdomain( 'mpat-explorer', false, basename( dirname( __FILE__ ) ) . '/languages' );
-        add_menu_page('MPAT_Explorer', __('Explorer', 'mpat-explorer'), 'manage_mpat_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
+        add_menu_page(__('MPAT_Explorer','mpat-explorer'), __('Explorer', 'mpat-explorer'), 'manage_mpat_options', 'MPAT_explorer', array(&$this, 'load'), 'dashicons-visibility');
     }
 
     function load()

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MPAT Explorer 1.0.beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-explorer\n"
-"POT-Creation-Date: 2017-08-29 14:24:30+00:00\n"
-"PO-Revision-Date: 2017-08-30 15:54+0200\n"
+"POT-Creation-Date: 2017-08-30 14:06:45+00:00\n"
+"PO-Revision-Date: 2017-08-30 16:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -14,6 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Explorer.php:22
+msgid "MPAT_Explorer"
+msgstr "MPAT Verkenner"
 
 #: Explorer.php:22
 msgid "Explorer"
