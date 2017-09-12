@@ -754,6 +754,7 @@ function explorerGetPage() {
   currentOption = null;
   var pageId = document.getElementById('page-id-field').value;
   if (pageId > 0) {
+<<<<<<< refs/remotes/origin/i18n
     commonPageIO.getPage(pageId, function (page) {
       currentPage = page;
       delete page.mpat_content.layout;
@@ -761,6 +762,12 @@ function explorerGetPage() {
     }, function (error) {
       document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errorGettingPage + pageId + "\n" + JSON.stringify(error, null, 2);
     });
+=======
+    currentPage = window.MPATExplorer.find(function (o) {
+      return o.page && o.page.ID == pageId;
+    }).page;
+    document.getElementById('mpat-text-editing').value = JSON.stringify(currentPage.meta.mpat_content, null, 4);
+>>>>>>> fix after change in REST where clones are always substituted
   } else {
     window.alert(mpatExplorerI18n.pageIs + pageId);
   }
@@ -802,9 +809,20 @@ function explorerGetOption() {
 function explorerPutPage() {
   if (!currentPage) return;
   var pageId = document.getElementById('page-id-field').value;
+<<<<<<< refs/remotes/origin/i18n
   currentPage.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonPageIO.put(pageId, currentPage, function (res) {
     document.getElementById('mpat-text-editing').value = mpatExplorerI18n.pageUpdated + pageId;
+=======
+  commonPageIO.put(pageId, {
+    ID: pageId,
+    title: currentPage.post_title,
+    parent: currentPage.post_parent,
+    status: currentPage.post_status,
+    mpat_content: JSON.parse(document.getElementById('mpat-text-editing').value)
+  }, function (res) {
+    document.getElementById('mpat-text-editing').value = "page updated " + pageId;
+>>>>>>> fix after change in REST where clones are always substituted
   }, function (error) {
     document.getElementById('mpat-text-editing').value = mpatExplorerI18n.errPutPage + pageId + "\n" + JSON.stringify(error, null, 2);
   });

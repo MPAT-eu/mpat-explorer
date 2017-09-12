@@ -199,19 +199,9 @@ function explorerGetPage() {
   currentOption = null;
   const pageId = document.getElementById('page-id-field').value;
   if (pageId > 0) {
-    commonPageIO.getPage(
-      pageId,
-      (page) => {
-        currentPage = page;
-        delete page.mpat_content.layout;
-        document.getElementById('mpat-text-editing').value =
-          JSON.stringify(page.mpat_content, null, 4);
-      },
-      (error) => {
-        document.getElementById('mpat-text-editing').value =
-          mpatExplorerI18n.errorGettingPage + pageId + "\n" + JSON.stringify(error, null, 2);
-      }
-    );
+    currentPage = window.MPATExplorer.find(o => o.page && o.page.ID == pageId).page;
+    document.getElementById('mpat-text-editing').value =
+        JSON.stringify(currentPage.meta.mpat_content, null, 4);
   } else {
     window.alert(mpatExplorerI18n.pageIs + pageId);
   }
@@ -265,11 +255,16 @@ function explorerGetOption() {
 function explorerPutPage() {
   if (!currentPage) return;
   const pageId = document.getElementById('page-id-field').value;
-  currentPage.mpat_content = JSON.parse(document.getElementById('mpat-text-editing').value);
   commonPageIO.put(
     pageId,
-    currentPage,
-    (res) => {
+    {
+      ID: pageId,
+      title: currentPage.post_title,
+      parent: currentPage.post_parent,
+      status: currentPage.post_status,
+      mpat_content: JSON.parse(document.getElementById('mpat-text-editing').value)
+    },
+    (res)=> {
       document.getElementById('mpat-text-editing').value =
         mpatExplorerI18n.pageUpdated + pageId;
     },
