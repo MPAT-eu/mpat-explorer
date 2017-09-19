@@ -23,10 +23,10 @@ export default class MediaIO {
     axios
       .get(restUrl, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -43,10 +43,10 @@ export default class MediaIO {
     axios
       .get(mediaRestUrl+'/'+pageId, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -65,7 +65,7 @@ export default class MediaIO {
       .put(`${mediaRestUrl}/${pageId}`, updated)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -84,7 +84,7 @@ export default class MediaIO {
       .delete(`${mediaRestUrl}/${pageId}`, {data: {force: true}})
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -103,7 +103,7 @@ export default class MediaIO {
       .post(mediaRestUrl, newPage)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx

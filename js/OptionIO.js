@@ -12,10 +12,10 @@ export default class OptionIO {
     axios
       .get(rootRestUrl, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -32,10 +32,10 @@ export default class OptionIO {
     axios
       .get(rootRestUrl+'/'+modelId, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -53,7 +53,7 @@ export default class OptionIO {
       .delete(`${rootRestUrl}/${pageId}`)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -71,7 +71,7 @@ export default class OptionIO {
       .post(rootRestUrl, newPage)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx

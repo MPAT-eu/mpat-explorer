@@ -11,7 +11,7 @@ const pagesRestUrl = `${window.wpApiSettings.root}${window.wpApiSettings.version
 const restUrl = `${pagesRestUrl}?per_page=100`;
 
 export default class PageIO {
-  
+
   constructor() {
     axios.defaults.headers.common['X-WP-Nonce'] = window.wpApiSettings.nonce;
   }
@@ -23,10 +23,10 @@ export default class PageIO {
     axios
       .get(restUrl, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -43,10 +43,10 @@ export default class PageIO {
     axios
       .get(pagesRestUrl+'/'+pageId, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        if (onSuccess) onSuccess.call(null, v.data);
       })
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -65,7 +65,7 @@ export default class PageIO {
       .put(`${pagesRestUrl}/${pageId}`, updated)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -84,7 +84,7 @@ export default class PageIO {
       .delete(`${pagesRestUrl}/${pageId}`)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx
@@ -103,7 +103,7 @@ export default class PageIO {
       .post(pagesRestUrl, newPage)
       .then(onSuccess)
       .catch((e) => {
-        onError.call(null, e);
+        if (onError) onError.call(null, e);
         if (e.response) {
           // The request was made, but the server responded with a status code
           // that falls out of the range of 2xx

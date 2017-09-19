@@ -322,6 +322,21 @@ function debugDb() {
       alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.hasNoLayout}`);
       return;
     }
+    if (page.meta.mpat_content.background) {
+      if (page.meta.mpat_content.styles && page.meta.mpat_content.styles.container) {
+        alert(`${mpatExplorerI18n.Page} ${name} has both a background and a container style, removing background`);
+      } else {
+        alert(`${mpatExplorerI18n.Page} ${name} has an old background, moving it to container styles`);
+        page.meta.mpat_content.styles = page.meta.mpat_content.styles || {};
+        page.meta.mpat_content.styles.container = page.meta.mpat_content.styles.container || {};
+        if (page.meta.mpat_content.background.indexOf('http') === 0) {
+          page.meta.mpat_content.styles.container.backgroundImage = page.meta.mpat_content.background;
+        } else {
+          page.meta.mpat_content.styles.container.backgroundColor = page.meta.mpat_content.background;
+        }
+      }
+      delete page.meta.mpat_content.background;
+    }
     const layoutBoxes = layout.meta.mpat_content.layout;
     if (content === undefined) {
       alert(`${mpatExplorerI18n.Page} ${name} ${mpatExplorerI18n.hasNoContent}`);
