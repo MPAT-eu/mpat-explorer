@@ -1,4 +1,23 @@
 <?php
+/**
+ *
+ * Copyright (c) 2017 MPAT Consortium , All rights reserved.
+ * Fraunhofer FOKUS, Fincons Group, Telecom ParisTech, IRT, Lacaster University, Leadin, RBB, Mediaset
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>.
+ *
+ **/
 /*
  * Plugin Name: MPAT Explorer
  * Plugin URI: https://github.com/MPAT-eu/mpat-explorer/
@@ -27,10 +46,10 @@ class Explorer
         /* activate WP REST API v2 http://v2.wp-api.org/extending/javascript-client/ */
         wp_enqueue_script('wp-api');
 
-        
+
         wp_enqueue_script('mpat-general', plugin_dir_url(__FILE__) . 'build/main.bundle.js', array(), 1.0, true);
         wp_localize_script('mpat-general', 'MPATExplorer', $this->get());
-        
+
         wp_enqueue_style('mpat-general', plugin_dir_url(__FILE__) . 'explorer.css');
 
         wp_localize_script('mpat-general', 'mpatExplorerI18n', array(
@@ -72,7 +91,7 @@ class Explorer
           'endOfDBemptying' => __('end of DB emptying', 'mpat-explorer'),
           )
         );
-        
+
 ?>
         <div id="insertionPoint">
             <script src="https://d3js.org/d3.v3.js"></script>
