@@ -780,6 +780,39 @@ function process(o) {
   selector3.addEventListener('change', explorerGetOption);
   var but4 = document.getElementById('explorerPutOption');
   but4.addEventListener('click', explorerPutOption);
+  //
+  ip.appendChild(document.createElement("br"));
+  var in4 = document.createElement("input");
+  in4.type = "text";
+  in4.size = 40;
+  in4.id = "tf-sethide";
+  ip.appendChild(in4);
+  var bu3 = document.createElement('button');
+  bu3.id = "btn-sethide";
+  bu3.title = "Set HideOnRED";
+  bu3.textContent = "Set HideOnRED";
+  bu3.addEventListener('click', setHideOnRed);
+  ip.appendChild(bu3);
+}
+
+function setHideOnRed() {
+  var text = document.getElementById("tf-sethide").value;
+  window.MPAT.pageArray.forEach(function (page) {
+    var content = page.meta.mpat_content;
+    if (!content.hasOwnProperty('pageProps')) {
+      content.pageProps = { hideOnRed: true, showOnRedText: text };
+      commonPageIO.put(page.ID, {
+        ID: page.ID,
+        title: page.post_title,
+        parent: page.post_parent,
+        status: page.post_status,
+        mpat_content: page.meta.mpat_content
+      }, function () {}, function (e) {
+        alert(mpatExplorerI18n.errorSavePage + page.ID + ' ' + e);
+      });
+    }
+  });
+  alert('end of processing');
 }
 
 var commonPageIO = new _PageIO2.default();
